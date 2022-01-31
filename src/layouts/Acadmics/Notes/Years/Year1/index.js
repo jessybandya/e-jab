@@ -37,7 +37,14 @@ import { motion } from "framer-motion";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import AddIcon from '@mui/icons-material/Add';
 import CancelIcon from '@mui/icons-material/Cancel';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import PhotoCamera from '@mui/icons-material/PhotoCamera';
+import Stack from '@mui/material/Stack';
 
+const Input = styled('input')({
+  display: 'none',
+});
 
 const dropIn = {
   hidden: {
@@ -95,6 +102,7 @@ function Year1() {
    const [addSem1, setAddSem1] = useState(false)
    const [notesTopic, setNotesTopic] = React.useState('');
    const [notesSubTopic, setSubNotesTopic] = React.useState('');
+   const [notesUnit, setNotesUnit] = React.useState('');
 
    const handleChange1 = (event) => {
     setNotesTopic(event.target.value);
@@ -103,7 +111,9 @@ function Year1() {
    const handleChange3 = (event) => {
     setSubNotesTopic(event.target.value);
    };
-
+   const handleChange4 = (event) => {
+    setNotesUnit(event.target.value);
+   };
    const showSem1Notes = () =>{
     setShowSem1(true)
     setAddSem1(false)
@@ -237,8 +247,27 @@ const showPastpaers = () =>{
       <div style={{display: "flex",justifyContent: "space-between"}}>
         <div></div> <div><h4>Add Note(s)</h4></div> <div><CancelIcon fontSize='medium' onClick={showSem1Notes} style={{cursor: "pointer"}}/></div>
       </div>
+      
       <Box sx={{ minWidth: 120 }}>
+
       <FormControl fullWidth>
+      <InputLabel >Select Unit</InputLabel>
+      <Select
+        labelId="demo-simple-select-label"
+        id="demo-simple-select"
+        value={notesUnit}
+        sx={{ height: 40,backgroundColor: "white"}}
+        label="Select Unit"
+        onChange={handleChange4}
+      >
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 201 Phyics">FCE 201 Phyics</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 112 Mathematics">FCE 112 Mathematics</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="C001 COMMUNICATION SKILLS">C001 COMMUNICATION SKILLS</MenuItem>
+      </Select>
+    </FormControl>
+
+    {notesUnit !== "" &&(
+      <FormControl sx={{marginTop:2}} fullWidth>
         <InputLabel >Select Topic</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -255,6 +284,9 @@ const showPastpaers = () =>{
           <MenuItem value="Topic 5">Topic 5</MenuItem>
         </Select>
       </FormControl>
+    )}
+
+
 
       {notesTopic !== "" &&(
         <FormControl sx={{marginTop:2}} fullWidth>
@@ -274,6 +306,21 @@ const showPastpaers = () =>{
           <MenuItem value="Topic 5">Topic 5</MenuItem>
         </Select>
       </FormControl>
+      )}
+
+      {notesSubTopic !== "" &&(
+        <center>
+        <Stack style={{marginTop:8}}>
+        <label htmlFor="contained-button-file">
+          <Input  id="contained-button-file" multiple type="file" />
+          <Button variant="contained" component="span">
+            <MDBox style={{color: "#fff"}}>Upload File</MDBox>
+          </Button>
+        </label>
+
+      </Stack>   
+        </center>
+
       )}
     </Box>
     </div>
