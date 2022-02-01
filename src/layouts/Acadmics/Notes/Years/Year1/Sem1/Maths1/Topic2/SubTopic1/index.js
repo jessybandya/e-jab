@@ -44,7 +44,7 @@ export default function SubTopic1() {
       alt="Click to view file"
       target="_blank"
       >
-      <Card sx={{ marginLeft:1, width: 300, backgroundColor: "#055C9D", border: `1px solid #fff`,cursor: "pointer" }}>
+      <Card sx={{ marginLeft:1, width: 250, backgroundColor: "#055C9D", border: `1px solid #fff`,cursor: "pointer" }}>
 
     <CardHeader
 
