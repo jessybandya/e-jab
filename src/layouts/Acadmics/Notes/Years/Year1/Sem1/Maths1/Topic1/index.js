@@ -3,7 +3,7 @@ import React from 'react';
 function Topic1() {
   return (
       <div>
-      <h1>Topic 1</h1>
+      <h4>Sub Topic 1</h4>
       </div>
   )
 }
