@@ -13,9 +13,9 @@ import {
     setTransparentSidenav,
     setWhiteSidenav,
   } from "../../../../../../../context";
-  
-
-
+  import CommentIcon from '@mui/icons-material/Comment';
+import Comments from "../Comments"
+import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 function Maths1() {
     const [controller, dispatch] = useMaterialUIController();
     const { miniSidenav, transparentSidenav, whiteSidenav, darkMode, sidenavColor } = controller;
@@ -24,6 +24,7 @@ function Maths1() {
     const [topic3, setTopic3] = useState(false)
     const [topic4, setTopic4] = useState(false)
     const [topic5, setTopic5] = useState(false)
+    const [comments, setComments] = useState(false)
     
     const showTopic1 = () =>{
         setTopic1(true)
@@ -31,6 +32,7 @@ function Maths1() {
         setTopic3(false)
         setTopic4(false)
         setTopic5(false)
+        setComments(false)
       }
     
       const showTopic2 = () =>{
@@ -39,6 +41,7 @@ function Maths1() {
         setTopic3(false)
         setTopic4(false)
         setTopic5(false)
+        setComments(false)
       }
 
       const showTopic3 = () =>{
@@ -47,6 +50,7 @@ function Maths1() {
         setTopic1(false)
         setTopic4(false)
         setTopic5(false)
+        setComments(false)
       }
 
       const showTopic4 = () =>{
@@ -55,6 +59,7 @@ function Maths1() {
         setTopic3(false)
         setTopic1(false)
         setTopic5(false)
+        setComments(false)
       }
 
       const showTopic5 = () =>{
@@ -63,6 +68,16 @@ function Maths1() {
         setTopic3(false)
         setTopic4(false)
         setTopic1(false)
+        setComments(false)
+      }
+
+      const showComments = () =>{
+        setComments(true)
+        setTopic2(false)
+        setTopic3(false)
+        setTopic4(false)
+        setTopic1(false)
+        setTopic5(false)
       }
     return(
         <>
@@ -71,13 +86,11 @@ function Maths1() {
            <div>
            <div style={{display: "flex", justifyContent: "space-between",alignItems: "center"}}>
             <div><ArrowBackIosNewIcon fontSize="medium" style={{cursor: "pointer"}} onClick={() => setTopic1(false)}/></div><div>
-            <MDButton
-            rel="noreferrer"
-            variant="gradient"
-            color={sidenavColor}
-            style={{marginBottom:10}}
-            >Topic 1</MDButton>
-            </div><div></div>
+            <h3>Topic 1</h3>
+            </div>
+            <div> 
+            
+            </div>
            </div>
            <hr />
            <Topic1 />
@@ -86,13 +99,11 @@ function Maths1() {
         <div>
         <div style={{display: "flex", justifyContent: "space-between",alignItems: "center"}}>
          <div><ArrowBackIosNewIcon fontSize="medium" style={{cursor: "pointer"}} onClick={() => setTopic2(false)}/></div><div>
-         <MDButton
-         rel="noreferrer"
-         variant="gradient"
-         color={sidenavColor}
-         style={{marginBottom:10}}
-         >Topic 2</MDButton>
-         </div><div></div>
+         <h3>Topic 2</h3>
+         </div>
+         <div>
+      
+         </div>
         </div>
         <hr />
         <Topic2 />
@@ -101,13 +112,11 @@ function Maths1() {
         <div>
         <div style={{display: "flex", justifyContent: "space-between",alignItems: "center"}}>
          <div><ArrowBackIosNewIcon fontSize="medium" style={{cursor: "pointer"}} onClick={() => setTopic3(false)}/></div><div>
-         <MDButton
-         rel="noreferrer"
-         variant="gradient"
-         color={sidenavColor}
-         style={{marginBottom:10}}
-         >Topic 3</MDButton>
-         </div><div></div>
+         <h3>Topic 3</h3>
+         </div>
+         <div>
+      
+         </div>
         </div>
         <hr />
         <Topic3 />
@@ -116,13 +125,11 @@ function Maths1() {
         <div>
         <div style={{display: "flex", justifyContent: "space-between",alignItems: "center"}}>
          <div><ArrowBackIosNewIcon fontSize="medium" style={{cursor: "pointer"}} onClick={() => setTopic4(false)}/></div><div>
-         <MDButton
-         rel="noreferrer"
-         variant="gradient"
-         color={sidenavColor}
-         style={{marginBottom:10}}
-         >Topic 4</MDButton>
-         </div><div></div>
+         <h3>Topic 4</h3>
+         </div>
+         <div>
+      
+         </div>
         </div>
         <hr />
         <Topic4 />
@@ -131,23 +138,46 @@ function Maths1() {
         <div>
         <div style={{display: "flex", justifyContent: "space-between",alignItems: "center"}}>
          <div><ArrowBackIosNewIcon fontSize="medium" style={{cursor: "pointer"}} onClick={() => setTopic5(false)}/></div><div>
+         <h3>Topic 5</h3>
+         </div>
+         <div>
+      
+         </div>
+        </div>
+        <hr />
+        <Topic5 />
+        </div>
+       ): comments ?(
+        <div>
+        <div style={{display: "flex", justifyContent: "space-between",alignItems: "center"}}>
+         <div></div><div>
          <MDButton
          rel="noreferrer"
          variant="gradient"
          color={sidenavColor}
          style={{marginBottom:10}}
-         >Topic 5</MDButton>
-         </div><div></div>
+         >Comment Section</MDButton>
+         </div>
+         <div>
+         <CancelPresentationIcon fontSize="medium" style={{cursor: "pointer"}} onClick={() => setComments(false)}/>
+         </div>
         </div>
         <hr />
-        <Topic5 />
+        <Comments />
         </div>
        ):(
         <div>
 
         <div style={{cursor: "pointer"}} onClick={showTopic1}>
         <hr/>
-         <center><b><h2>Topic 1</h2></b></center>
+        <MDButton
+        fullWidth
+        rel="noreferrer"
+        variant="gradient"
+        color={sidenavColor}
+        >
+         Topic 1 
+        </MDButton>
          <hr/>
          <p>Sub Topic 1</p>
          <p>Sub Topic 2</p>
@@ -159,7 +189,14 @@ function Maths1() {
         <div style={{cursor: "pointer"}} onClick={showTopic2}>
         
         <hr/>
-         <center><b><h2>Topic 2</h2></b></center>
+        <MDButton
+        fullWidth
+        rel="noreferrer"
+        variant="gradient"
+        color={sidenavColor}
+        >
+         Topic 2 
+        </MDButton>
          <hr/>
          <p>Sub Topic 1</p>
          <p>Sub Topic 2</p>
@@ -170,7 +207,14 @@ function Maths1() {
         
         <div style={{cursor: "pointer"}} onClick={showTopic3}>
         <hr/>
-         <center><b><h2>Topic 3</h2></b></center>
+        <MDButton
+        fullWidth
+        rel="noreferrer"
+        variant="gradient"
+        color={sidenavColor}
+        >
+         Topic 3
+        </MDButton>
          <hr/>
          <p>Sub Topic 1</p>
          <p>Sub Topic 2</p>
@@ -180,7 +224,14 @@ function Maths1() {
         </div>
         <hr/>
         <div style={{cursor: "pointer"}} onClick={showTopic4}>
-         <center><b><h2>Topic 4</h2></b></center>
+        <MDButton
+        fullWidth
+        rel="noreferrer"
+        variant="gradient"
+        color={sidenavColor}
+        >
+         Topic 4 
+        </MDButton>
          <hr/>
          <p>Sub Topic 1</p>
          <p>Sub Topic 2</p>
@@ -191,7 +242,14 @@ function Maths1() {
         
         <div style={{cursor: "pointer"}} onClick={showTopic5}>
         <hr/>
-         <center><b><h2>Topic 5</h2></b></center>
+        <MDButton
+        fullWidth
+        rel="noreferrer"
+        variant="gradient"
+        color={sidenavColor}
+        >
+         Topic 5 
+        </MDButton>
          <hr/>
          <p>Sub Topic 1</p>
          <p>Sub Topic 2</p>

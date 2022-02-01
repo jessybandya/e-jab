@@ -41,6 +41,11 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Stack from '@mui/material/Stack';
+import Comments from './Sem1/Comments';
+import References from './Sem1/References';
+import CommentIcon from '@mui/icons-material/Comment';
+import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
+import PsychologyIcon from '@mui/icons-material/Psychology';
 
 const Input = styled('input')({
   display: 'none',
@@ -103,6 +108,9 @@ function Year1() {
    const [notesTopic, setNotesTopic] = React.useState('');
    const [notesSubTopic, setSubNotesTopic] = React.useState('');
    const [notesUnit, setNotesUnit] = React.useState('');
+   const [comments, setComments] = useState(false)
+   const [references, setReferences] = useState(false)
+
 
    const handleChange1 = (event) => {
     setNotesTopic(event.target.value);
@@ -117,11 +125,28 @@ function Year1() {
    const showSem1Notes = () =>{
     setShowSem1(true)
     setAddSem1(false)
+    setComments(false)
+    setReferences(false)
   }
 
   const showAddSem1 = () =>{
     setAddSem1(true)
     setShowSem1(false)
+    setComments(false)
+    setReferences(false)
+  }
+  const showComments = () =>{
+    setComments(true)
+    setShowSem1(false)
+    setAddSem1(false)
+    setReferences(false)
+  }
+
+  const showReferences = () =>{
+    setReferences(true)
+    setShowSem1(false)
+    setAddSem1(false)
+    setComments(false)
   }
 
    const handleChange = (event) => {
@@ -326,6 +351,32 @@ const showPastpaers = () =>{
     </div>
   ): showSem1 ?(
     <Sem1  sem1={sem1}/>
+  ): comments ?(
+    <div>
+    <div style={{display: "flex", justifyContent: "space-between",alignItems: "center"}}>
+     <div></div><div>
+    <h3>Comment(s)</h3>
+     </div>
+     <div>
+     <CancelPresentationIcon fontSize="medium" style={{cursor: "pointer"}} onClick={() => setComments(false)}/>
+     </div>
+    </div>
+    <hr />
+    <Comments />
+    </div>
+  ): references ?(
+    <div>
+    <div style={{display: "flex", justifyContent: "space-between",alignItems: "center"}}>
+     <div></div><div>
+    <h3>References</h3>
+     </div>
+     <div>
+     <CancelPresentationIcon fontSize="medium" style={{cursor: "pointer"}} onClick={() => setReferences(false)}/>
+     </div>
+    </div>
+    <hr />
+    <References />
+    </div>
   ):(
     <Sem1  sem1={sem1}/>
   )}
@@ -333,7 +384,23 @@ const showPastpaers = () =>{
     </motion.div>
   </DialogContent>
   <DialogActions style={{backgroundColor: "#1a2035"}}>
-  </DialogActions>
+  <MDButton
+  rel="noreferrer"
+  variant="gradient"
+  color={sidenavColor}
+  onClick={showComments}
+  >
+   Comment(s) Section <CommentIcon fontSize="medium" style={{cursor: "pointer",marginLeft:2}}/>
+  </MDButton>
+      <MDButton
+      rel="noreferrer"
+      variant="gradient"
+      color={sidenavColor}
+      onClick={showReferences}
+      >
+       Reference Materials <PsychologyIcon fontSize="medium" style={{cursor: "pointer",marginLeft:2}}/>
+      </MDButton>
+   </DialogActions>
   
 </Dialog>
 
@@ -370,6 +437,7 @@ const showPastpaers = () =>{
 
   </DialogContent>
   <DialogActions style={{backgroundColor: "#1a2035"}}>
+      <h1>Add Button</h1>
   </DialogActions>
 </Dialog>
 </div>
