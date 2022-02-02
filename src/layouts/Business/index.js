@@ -114,7 +114,7 @@ function Business() {
     <DashboardLayout>
     <DashboardNavbar />
     <MDBox py={3}>
-     <Page />
+     <h1>Business Page</h1>
     </MDBox>
     <Footer />
   </DashboardLayout>
