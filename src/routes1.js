@@ -1,35 +1,41 @@
 // Material Dashboard 2 React layouts
 import Dashboard from "./layouts/dashboard";
-import Acadmics from "./layouts/Acadmics";
-import People from "./layouts/People";
-
+import Tables from "./layouts/tables";
 import Billing from "./layouts/billing";
-import RTL from "./layouts/rtl";
+import Blog from "./layouts/Blog";
 import Notifications from "./layouts/notifications";
 import Profile from "./layouts/profile";
 import SignIn from "./layouts/authentication/sign-in";
 import SignUp from "./layouts/authentication/sign-up";
 import Home from "./layouts/Home"
+import Acadmics from "./layouts/Acadmics"
+import People from "./layouts/People";
+import Skills from "./layouts/Skills";
+import Orientation from "./layouts/Orientation";
+import Business from "./layouts/Business";
+import Showcase from "./layouts/Showcase";
+import Calender from "./layouts/Calender";
+import Lecturers from "./layouts/Lecturers";
+import Badge from '@mui/material/Badge';
 // @mui icons
 import Icon from "@mui/material/Icon";
-import Badge from '@mui/material/Badge';
 
 const routes = [
-  // {
-  //   type: "collapse",
-  //   name: "Dashboard",
-  //   key: "dashboard",
-  //   icon: <Icon fontSize="small">dashboard</Icon>,
-  //   route: "/dashboard",
-  //   component: <Dashboard />,
-  // },
   {
     type: "collapse",
-    name: "Home",
-    key: "home",
+    name: "Announcements",
+    key: "announcements",
     icon: <Icon fontSize="small">home</Icon>,
-    route: "/home",
+    route: "/announcements",
     component: <Home />,
+  },
+  {
+    type: "collapse",
+    name: "Academics",
+    key: "academics",
+    icon: <Icon fontSize="small">menu_book</Icon>,
+    route: "/academics",
+    component: <Acadmics />,
   },
   {
     type: "collapse",
@@ -41,45 +47,60 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Academics",
-    key: "academics",
+    name: "Blog",
+    key: "blog",
+    icon: <Icon fontSize="small">article</Icon>,
+    route: "/blog",
+    component: <Blog />,
+  },
+  {
+    type: "collapse",
+    name: "Show Case",
+    key: "showcase",
+    icon: <Icon fontSize="small">library_add</Icon>,
+    route: "/showcase",
+    component: <Showcase />,
+  },
+  {
+    type: "collapse",
+    name: "Essential Skills",
+    key: "skills",
+    icon: <Icon fontSize="small">work</Icon>,
+    route: "/skills",
+    component: <Skills />,
+  },
+  {
+    type: "collapse",
+    name: "Orientation",
+    key: "orientation",
+    icon: <Icon fontSize="small">navigation</Icon>,
+    route: "/orientation",
+    component: <Orientation />,
+  },
+  {
+    type: "collapse",
+    name: "Lecturers",
+    key: "lecturers",
     icon: <Icon fontSize="small">local_library</Icon>,
-    route: "/academics",
-    component: <Acadmics />,
+    route: "/lecturers",
+    component: <Lecturers />,
   },
   {
     type: "collapse",
-    name: "Messages",
-    key: "billing",
-    icon: <Icon fontSize="small">mail_outline</Icon>,
-    route: "/billing",
-    component: <Billing />,
-  },
-  // {
-  //   type: "collapse",
-  //   name: "Manage Posts",
-  //   key: "rtl",
-  //   icon: <Icon fontSize="small">library_add</Icon>,
-  //   route: "/rtl",
-  //   component: <RTL />,
-  // },
-  {
-    type: "collapse",
-    name: "Notifications",
-    key: "notifications",
-    icon:   <Badge badgeContent={12} color="primary"><Icon fontSize="small">notifications</Icon></Badge>,
-    route: "/notifications",
-    component: <Notifications />,
+    name: "Calender",
+    key: "calender",
+    icon: <Icon fontSize="small">visibility</Icon>,
+    route: "/calender",
+    component: <Calender />,
   },
   {
     type: "collapse",
-    name: "Profile",
-    key: "profile",
-    icon: <Icon fontSize="small">person</Icon>,
-    route: "/profile",
-    component: <Profile />,
-  },
-  
+    name: "Business",
+    key: "business",
+    icon: <Icon fontSize="small">business</Icon>,
+    route: "/business",
+    component: <Business />,
+  },  
   {
     type: "collapse",
     name: "Sign In",

@@ -50,10 +50,11 @@ import routes1 from "./routes1";
 import Nopage from "./layouts/Nopage"
 // Material Dashboard 2 React contexts
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "./context";
-
+import { auth1 } from "./components/firebase"
 // Images
 import brandWhite from "./assets/images/logo-ct.png";
 import brandDark from "./assets/images/logo-ct-dark.png";
+import SignIn from "./layouts/authentication/sign-in";
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -88,6 +89,18 @@ export default function App() {
       setOnMouseEnter(true);
     }
   };
+
+  const [user, setUser] = useState([]);
+
+	useEffect(() => {
+	  auth1.onAuthStateChanged((authUser) =>{
+		if(authUser){
+		  setUser(authUser)
+		}else{
+		  setUser(false);
+		}
+	  })
+	}, [])
 
   // Close sidenav when mouse leave mini sidenav
   const handleOnMouseLeave = () => {
@@ -152,7 +165,7 @@ export default function App() {
     <CacheProvider value={rtlCache}>
       <ThemeProvider theme={darkMode ? themeDarkRTL : themeRTL}>
         <CssBaseline />
-        {loggedIn === "true" ?(
+        {auth1.currentUser?.uid ?(
           <>
           {layout === "dashboard" && (
             <>
@@ -171,9 +184,9 @@ export default function App() {
           {layout === "vr" && <Configurator />}
           <Routes>
             {getRoutes(routes)}
-            <Route exact path="/nopage" element={<Nopage />} />
+            <Route exact path="/authentication/sign-in" element={<SignIn />} />
 
-            <Route path="*" element={<Navigate to="/home" />} />
+            <Route path="*" element={<Navigate to="/announcements" />} />
              </Routes>
           </>
         ):(
@@ -195,9 +208,9 @@ export default function App() {
           {layout === "vr" && <Configurator />}
           <Routes>
             {getRoutes(routes1)}
-            <Route exact path="/nopage" element={<Nopage />} />
+            <Route exact path="/authentication/sign-in" element={<SignIn />} />
 
-            <Route path="*" element={<Navigate to="/home" />} />
+            <Route path="*" element={<Navigate to="/announcements" />} />
             
             </Routes>
           </>
@@ -208,7 +221,7 @@ export default function App() {
   ) : (
     <ThemeProvider theme={darkMode ? themeDark : theme}>
       <CssBaseline />
-      {loggedIn === "true" ?(
+      {auth1?.currentUser?.uid ?(
         <>
         {layout === "dashboard" && (
           <>
@@ -227,9 +240,9 @@ export default function App() {
         {layout === "vr" && <Configurator />}
         <Routes>
           {getRoutes(routes)}
-          <Route exact path="/nopage" element={<Nopage />} />
+          <Route exact path="/authentication/sign-in" element={<SignIn />} />
 
-          <Route path="*" element={<Navigate to="/home" />} />
+          <Route path="*" element={<Navigate to="/announcements" />} />
         </Routes>
         </>
       ):(
@@ -251,9 +264,9 @@ export default function App() {
         {layout === "vr" && <Configurator />}
         <Routes>
           {getRoutes(routes1)}
-          <Route exact path="/nopage" element={<Nopage />} />
+          <Route exact path="/authentication/sign-in" element={<SignIn />} />
 
-          <Route path="*" element={<Navigate to="/home" />} />
+          <Route path="*" element={<Navigate to="/announcements" />} />
           
           </Routes>
         </>
