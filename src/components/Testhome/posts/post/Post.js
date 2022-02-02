@@ -278,7 +278,7 @@ const likeHandle = (event) => {
             {fileType === "image" ? (
               <img src={fileData} alt="post" />
             ) : (
-              <ReactPlayer url={fileData} style={{border: "1px solid #0A84FF"}} controls={true} />
+              <ReactPlayer url={fileData} style={{border: "1px solid #0A84FF",borderRadius:10}} controls={true} />
             )}
           </div>
         )}
