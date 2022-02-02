@@ -56,7 +56,7 @@ function CoverLayout({ coverHeight, image, children }) {
             `${linearGradient(
               rgba(gradients.dark.main, 0.4),
               rgba(gradients.dark.state, 0.4)
-            )}, url(${image})`,
+            )}, url('https://www.architectureartdesigns.com/wp-content/uploads/2018/10/civil_engineering_firm_project.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
