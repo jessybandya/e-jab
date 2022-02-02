@@ -264,28 +264,26 @@ const likeHandle = (event) => {
           <MoreHorizOutlinedIcon style={{marginTop:-40}}/>
         </div>
         <div className={classes.post__body}>
-          {/* <div className={classes.body__description}>
-            <p>{description}</p>
-          </div> */}
+
                 <Link to={`/postview/${postId}/${ownerId}`}>
 
                 <CardContent>
         <MDTypography paragraph style={{fontWeight:"600"}}>{title}</MDTypography>
        <hr/>
-        <MDTypography paragraph>
+        <MDTypography style={{fontSize: 16}}  paragraph>
          {description}
         </MDTypography>
-    
+        {fileData && (
+          <div className={classes.body__image}>
+            {fileType === "image" ? (
+              <img src={fileData} alt="post" />
+            ) : (
+              <ReactPlayer url={fileData} style={{border: "1px solid #0A84FF"}} controls={true} />
+            )}
+          </div>
+        )}
       </CardContent>
-          {fileData && (
-            <div className={classes.body__image}>
-              {fileType === "image" ? (
-                <img src={fileData} alt="post" />
-              ) : (
-                <ReactPlayer url={fileData} controls={true} />
-              )}
-            </div>
-          )}
+
                   </Link>
 
         </div>

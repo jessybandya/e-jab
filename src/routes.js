@@ -112,10 +112,10 @@ const routes = [
   },
   {
     type: "collapse",
-    name: "Calender",
-    key: "calender",
-    icon: <Icon fontSize="small">visibility</Icon>,
-    route: "/calender",
+    name: "Class Room",
+    key: "classroom",
+    icon: <Icon fontSize="small">school</Icon>,
+    route: "/classroom",
     component: <Calender />,
   },
   {
