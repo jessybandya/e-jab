@@ -13,8 +13,10 @@ Coded by www.creative-tim.com
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
 
-import { useState, useEffect } from "react";
-
+import React, { useState, useEffect } from "react";
+import Badge from '@mui/material/Badge';
+import Stack from '@mui/material/Stack';
+import MailIcon from '@mui/icons-material/Mail';
 // react-router components
 import { useLocation, Link } from "react-router-dom";
 
@@ -52,7 +54,7 @@ import {
   setMiniSidenav,
   setOpenConfigurator,
 } from "../../../context";
-
+import { auth1 } from "../../../components/firebase"
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
   const [controller, dispatch] = useMaterialUIController();
@@ -104,9 +106,27 @@ function DashboardNavbar({ absolute, light, isMini }) {
       onClose={handleCloseMenu}
       sx={{ mt: 2 }}
     >
-      <NotificationItem icon={<Icon>email</Icon>} title="Check new messages" />
-      <NotificationItem icon={<Icon>podcasts</Icon>} title="Manage Podcast sessions" />
-      <NotificationItem icon={<Icon>shopping_cart</Icon>} title="Payment successfully completed" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Jessy Bandya commented on your post" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Odero Phelix Replied to your comment" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Arnold liked your post" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Jessy Bandya commented on your post" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Odero Phelix Replied to your comment" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Arnold liked your post" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Jessy Bandya commented on your post" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Odero Phelix Replied to your comment" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Arnold liked your post" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Jessy Bandya commented on your post" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Odero Phelix Replied to your comment" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Arnold liked your post" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Jessy Bandya commented on your post" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Odero Phelix Replied to your comment" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Arnold liked your post" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Jessy Bandya commented on your post" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Odero Phelix Replied to your comment" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Arnold liked your post" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Jessy Bandya commented on your post" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Odero Phelix Replied to your comment" />
+      <NotificationItem icon={<Icon>account_circle</Icon>} title="Arnold liked your post" />
     </Menu>
   );
 
@@ -139,11 +159,14 @@ function DashboardNavbar({ absolute, light, isMini }) {
               <MDInput label="Search here" />
             </MDBox>
             <MDBox color={light ? "white" : "inherit"}>
-              <Link to="/authentication/sign-in/basic">
+            {auth1?.currentUser?.uid &&(
+              <Link to="/profile">
                 <IconButton sx={navbarIconButton} size="small" disableRipple>
                   <Icon sx={iconsStyle}>account_circle</Icon>
                 </IconButton>
               </Link>
+            )}
+
 
               <IconButton
                 size="small"
@@ -154,7 +177,10 @@ function DashboardNavbar({ absolute, light, isMini }) {
               >
                 <Icon sx={iconsStyle}>settings</Icon>
               </IconButton>
-              <IconButton
+
+
+              {auth1?.currentUser?.uid &&(
+                <IconButton
                 size="small"
                 disableRipple
                 color="inherit"
@@ -164,8 +190,12 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 variant="contained"
                 onClick={handleOpenMenu}
               >
-                <Icon sx={iconsStyle}>notifications</Icon>
+              <Badge badgeContent={20} color="primary">
+              <Icon sx={iconsStyle}>notifications</Icon>
+            </Badge>
               </IconButton>
+              )}
+
               {renderMenu()}
               <IconButton
               size="small"
