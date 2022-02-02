@@ -50,7 +50,7 @@ function BasicLayout({ image, children }) {
             `${linearGradient(
               rgba(gradients.dark.main, 0.6),
               rgba(gradients.dark.state, 0.6)
-            )}, url(${image})`,
+            )}, url('https://damassets.autodesk.net/content/dam/autodesk/www/solutions/bim/fy22/civil-engineering/how-is-bim-used-in-civil-engineering-thumb-1172x660.jpg')`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

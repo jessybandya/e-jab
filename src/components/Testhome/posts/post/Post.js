@@ -248,7 +248,7 @@ const likeHandle = (event) => {
     return (
       <>
       <div style={{display: "flex"}}>
-      <MdBox ref={ref} style={{border: "2px solid #fff",padding:5,borderRadius:10,marginTop:5}} className="post1" >
+      <MdBox ref={ref} style={{border: "2px solid #0A84FF",padding:5,borderRadius:10,marginTop:5}} className="post1" >
         <div className={classes.post__header}>
           <Avatar src={profileUserData?.photoURL} style={{marginTop:-30}}/>
           <div className={classes.header__info}>

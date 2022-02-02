@@ -110,7 +110,6 @@ export default makeStyles((theme) => ({
     borderRadius: 4,
     transition: "all 0.4s ease",
     "&:hover": {
-      backgroundColor: theme.palette.type === "dark" ? darkSecondary : "lightgrey",
     },
     "& > h4": {
       color: theme.palette.type === "dark" && textDark,

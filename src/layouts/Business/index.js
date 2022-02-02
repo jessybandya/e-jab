@@ -30,7 +30,7 @@ import MDSnackbar from "../../components1/MDSnackbar";
 import DashboardLayout from "../../examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "../../examples/Navbars/DashboardNavbar";
 import Footer from "../../examples/Footer";
-
+import Page from "../authentication/reset-password/cover"
 function Business() {
   const [successSB, setSuccessSB] = useState(false);
   const [infoSB, setInfoSB] = useState(false);
@@ -114,7 +114,7 @@ function Business() {
     <DashboardLayout>
     <DashboardNavbar />
     <MDBox py={3}>
-    <h1>This Business Page</h1>
+     <Page />
     </MDBox>
     <Footer />
   </DashboardLayout>

@@ -16,7 +16,7 @@ import { Modal } from "react-responsive-modal";
 import MkBox from "../../../components1/MDBox"
 import MDTypography from "../../../components1/MDTypography"
 import MDInput from "../../../components1/MDInput"
-
+import "./styles.css"
 
 import {
   Button,
@@ -271,7 +271,7 @@ const Form = () => {
 
   return (
     <>
-    <MkBox  className={classes.upload}>
+    <MkBox  className="postAdd">
       <div className={classes.upload__header}>
         <Avatar src={profileUserData?.photoURL} />
         <form className={classes.header__form}  style={{cursor: "pointer"}}>
@@ -279,7 +279,7 @@ const Form = () => {
           
 
           <div style={{cursor: "pointer"}} onClick={handleExpandClick}>
-            <span style={{marginLeft:10}}>{`Add post...`}</span>
+            <span style={{marginLeft:10}}>{`Add Announcement...`}</span>
           </div>
           <input
             id="upload-image"
@@ -371,21 +371,23 @@ const Form = () => {
         ""
       )}
       </div>
-      </CardContent>
-    </Collapse>
-      <Divider />
+      <Divider style={{backgroundColor:"#0A84FF"}}/>
 
       <div className={classes.upload__media}>
-        <label htmlFor="upload-video" className={classes.media__options}>
-          <VideocamRoundedIcon style={{ color: "#3f51b5" }} />
-          <span style={{fontSize:20,fontWeight:"700"}}><MDTypography>Video</MDTypography></span>
-        </label>
-        <label htmlFor="upload-image" className={classes.media__options}>
-          <PhotoRoundedIcon style={{ color: "#3f51b5" }} />
-          <span style={{fontSize:20,fontWeight:"700"}}><MDTypography>Photo</MDTypography></span>
-        </label>
+      <label htmlFor="upload-video"  className={classes.media__options}>
+        <VideocamRoundedIcon style={{ color: "#0A84FF" }} />
+        <span style={{fontSize:20,fontWeight:"700"}}><MDTypography>Video</MDTypography></span>
+      </label>
+      <label htmlFor="upload-image"  className={classes.media__options}>
+        <PhotoRoundedIcon style={{ color: "#0A84FF" }} />
+        <span style={{fontSize:20,fontWeight:"700"}}><MDTypography>Photo</MDTypography></span>
+      </label>
 
-      </div>
+    </div>
+      </CardContent>
+    </Collapse>
+
+
 
 
     </MkBox>

@@ -55,6 +55,7 @@ import { auth1 } from "./components/firebase"
 import brandWhite from "./assets/images/logo-ct.png";
 import brandDark from "./assets/images/logo-ct-dark.png";
 import SignIn from "./layouts/authentication/sign-in";
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
