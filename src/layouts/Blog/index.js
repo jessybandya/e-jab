@@ -30,6 +30,25 @@ import MDSnackbar from "../../components1/MDSnackbar";
 import DashboardLayout from "../../examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "../../examples/Navbars/DashboardNavbar";
 import Footer from "../../examples/Footer";
+import Features from '../../components/Firstpage/components/Features/Features';
+import Hero from '../../components/Firstpage/components/Hero/Hero';
+import {
+  Animator,
+  batch,
+  Fade,
+  FadeIn,
+  Move,
+  MoveIn,
+  MoveOut,
+  ScrollContainer,
+  ScrollPage,
+  Sticky,
+  StickyIn,
+  ZoomIn
+} from 'react-scroll-motion';
+
+const ZoomInScrollOut = batch(StickyIn(), FadeIn(), ZoomIn());
+const FadeUp = batch(Fade(), Sticky(), Move())
 
 function Blog() {
   const [successSB, setSuccessSB] = useState(false);
@@ -114,7 +133,7 @@ function Blog() {
     <DashboardLayout>
     <DashboardNavbar />
     <MDBox py={3}>
-    <h1>This Blog Page</h1>
+   <Hero/>
     </MDBox>
     <Footer />
   </DashboardLayout>

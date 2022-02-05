@@ -7,10 +7,10 @@ import TypeWriter from "react-typewriter";
 
 const Hero = () => {
 	return (
-		<HeroSection>
+		<HeroSection style={{marginTop:-190}}>
 			<HeroVideo src="./assets/test.mp4" autoPlay muted  loop/>
 			<Container>
-			<MainHeading><TypeWriter typing={0.5}>UoN ACES </TypeWriter><p><TypeWriter typing={0.5}>MOTIVATE || INSPIRE || INNOVATE</TypeWriter></p></MainHeading>
+			<MainHeading><TypeWriter typing={0.5}>UoN ACES </TypeWriter><p><TypeWriter typing={0.5}> <span style={{fontSize:20}}>MOTIVATE || INSPIRE || INNOVATE</span></TypeWriter></p></MainHeading>
 				
 			<TypeWriter typing={1.0}>
 			<HeroText>
@@ -20,8 +20,8 @@ const Hero = () => {
 
 
 				<ButtonWrapper>
-					{!1?.currentUser?.uid &&(
-					<Link to="/register">
+					{!auth1?.currentUser?.uid &&(
+					<Link to="/authentication/sign-up">
 					<Button>Get Started</Button>
 				</Link>
 					)}

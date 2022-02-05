@@ -13,7 +13,7 @@ export const HeroVideo = styled.video`
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
-	filter: brightness(50%);
+	filter: brightness(20%);
 	top: 0;
 	position: absolute;
 	z-index: -1;
