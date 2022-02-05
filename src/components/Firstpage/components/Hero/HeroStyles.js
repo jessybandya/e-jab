@@ -7,6 +7,7 @@ export const HeroSection = styled.section`
 	background-size: cover;
 	padding-top: clamp(70px, 25vh, 220px);
 	box-shadow: inset 0 0 0 1000px rgba (0, 0, 0, 0.2);
+	width: 100%;
 `;
 
 export const HeroVideo = styled.video`

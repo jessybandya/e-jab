@@ -22,11 +22,11 @@ const Features = () => {
 	};
 
 	return (
-		<Section smPadding="50px 10px" position="relative" inverse id="about">
+		<Section style={{marginTop:-100}} smPadding="50px 10px" position="relative" inverse id="about">
 			<Container>
-				<FeatureTextWrapper>
-					<FeatureTitle>Civil Engineering Fields</FeatureTitle>
-				</FeatureTextWrapper>
+			<FeatureTextWrapper>
+			<FeatureTitle><center><i>Civil Engineering Fields</i></center></FeatureTitle>
+		</FeatureTextWrapper>
 				<FeatureWrapper>
 					{featuresData.map((el, index) => (
 						<FeatureColumn
