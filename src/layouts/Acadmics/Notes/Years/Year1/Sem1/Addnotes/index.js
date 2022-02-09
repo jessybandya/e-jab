@@ -138,10 +138,13 @@ function AddNotes() {
         <FormControl sx={{marginTop:2}} fullWidth>
         <MDInput
         id="standard-multiline-flexible"
-        label="Provide a link/ Book/Magazine etc... title"
+        label={<div style={{color:"#8C8C8C",marginBottom:10}}>Add Some Descriptions</div>}
+        multiline
+        maxRows={2}
         onChange={handleChange5}
         variant="standard"
         fullWidth
+        style={{backgroundColor:"#D1D1D1",border:"none",color:"black",borderRadius:2,marginRight:1}}
       />  
       </FormControl>
       )}
@@ -150,9 +153,9 @@ function AddNotes() {
         <center>
         <Stack style={{marginTop:8}}>
         <label htmlFor="contained-button-file">
-          <Input  id="contained-button-file" multiple  />
+          <Input  id="contained-button-file" multiple type="file" />
           <Button variant="contained" component="span">
-            <MDBox style={{color: "#fff"}} onClick={() => alert("Still working on this...")}>Add</MDBox>
+            <MDBox style={{color: "#fff"}}>Upload File</MDBox>
           </Button>
         </label>
 

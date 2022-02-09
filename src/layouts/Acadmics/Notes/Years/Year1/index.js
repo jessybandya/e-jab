@@ -50,6 +50,8 @@ import { auth1, db } from '../../../../../components/firebase';
 import Avatar from '@mui/material/Avatar';
 import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
+import AddNotes from './Sem1/Addnotes';
+import AvailableRef from './Sem1/References/AvailbleRef';
 
 
 
@@ -111,13 +113,23 @@ function Year1() {
    const [sem2, setSem2] = React.useState('');
    const [showSem1, setShowSem1] = useState(false)
    const [addSem1, setAddSem1] = useState(false)
-   const [notesTopic, setNotesTopic] = React.useState('');
-   const [notesSubTopic, setSubNotesTopic] = React.useState('');
-   const [notesUnit, setNotesUnit] = React.useState('');
    const [comments, setComments] = useState(false)
    const [references, setReferences] = useState(false)
    const [profileUserData, setProfileUserData] = useState();
    const [value, setValue] = useState('');
+   const [ref,setRef] = useState(false)
+   const [addRef,setAddRef] = useState(false)
+
+
+   const showRef = () =>{
+     setRef(true)
+     setAddRef(false)
+   }
+
+   const addRef1 = () => {
+    setRef(false)
+    setAddRef(true)
+   }
 
    const handleChange5 = (event) => {
      setValue(event.target.value);
@@ -135,16 +147,7 @@ function Year1() {
      });
  }, [])
 
-   const handleChange1 = (event) => {
-    setNotesTopic(event.target.value);
-   };
 
-   const handleChange3 = (event) => {
-    setSubNotesTopic(event.target.value);
-   };
-   const handleChange4 = (event) => {
-    setNotesUnit(event.target.value);
-   };
    const showSem1Notes = () =>{
     setShowSem1(true)
     setAddSem1(false)
@@ -216,14 +219,7 @@ function Year1() {
     }
   }, [open]);
 
-const showNotes = () =>{
-  setNotes(true)
-  setPastpapers(false)
-}
-const showPastpaers = () =>{
-  setNotes(false)
-  setPastpapers(true)
-}
+
   return <div>
   <MDBox py={3}>
   <div >
@@ -251,7 +247,7 @@ const showPastpaers = () =>{
   </FormControl>
 
   <FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">Year 2 Sementer 2</InputLabel>
+  <InputLabel id="demo-simple-select-label">Year 1 Sementer 2</InputLabel>
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
@@ -302,81 +298,7 @@ const showPastpaers = () =>{
         <div></div> <div><h4>Add Note(s)</h4></div> <div><CancelIcon fontSize='medium' onClick={showSem1Notes} style={{cursor: "pointer"}}/></div>
       </div>
       
-      <Box sx={{ minWidth: 120 }}>
-
-      <FormControl fullWidth>
-      <InputLabel >Select Unit</InputLabel>
-      <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
-        value={notesUnit}
-        sx={{ height: 40,backgroundColor: "white"}}
-        label="Select Unit"
-        onChange={handleChange4}
-      >
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 201 Phyics">CCS 001 COMMUNICATION SKILLS</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 112 Mathematics">FCE 112 Mathematics</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="C001 COMMUNICATION SKILLS">C001 COMMUNICATION SKILLS</MenuItem>
-      </Select>
-    </FormControl>
-
-    {notesUnit !== "" &&(
-      <FormControl sx={{marginTop:2}} fullWidth>
-        <InputLabel >Select Topic</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={notesTopic}
-          sx={{ height: 40,backgroundColor: "white"}}
-          label="Select Topic"
-          onChange={handleChange1}
-        >
-          <MenuItem value="Topic 1">Topic 1</MenuItem>
-          <MenuItem  value="Topic 2">Topic 2</MenuItem>
-          <MenuItem value="Topic 3">Topic 3</MenuItem>
-          <MenuItem value="Topic 4">Topic 4</MenuItem>
-          <MenuItem value="Topic 5">Topic 5</MenuItem>
-        </Select>
-      </FormControl>
-    )}
-
-
-
-      {notesTopic !== "" &&(
-        <FormControl sx={{marginTop:2}} fullWidth>
-        <InputLabel >Select Sub Topic</InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={notesSubTopic}
-          sx={{ height: 40}}
-          label="Select Sub Topic"
-          onChange={handleChange3}
-        >
-          <MenuItem value="Topic 1">Topic 1</MenuItem>
-          <MenuItem value="Topic 2">Topic 2</MenuItem>
-          <MenuItem value="Topic 3">Topic 3</MenuItem>
-          <MenuItem value="Topic 4">Topic 4</MenuItem>
-          <MenuItem value="Topic 5">Topic 5</MenuItem>
-        </Select>
-      </FormControl>
-      )}
-
-      {notesSubTopic !== "" &&(
-        <center>
-        <Stack style={{marginTop:8}}>
-        <label htmlFor="contained-button-file">
-          <Input  id="contained-button-file" multiple type="file" />
-          <Button variant="contained" component="span">
-            <MDBox style={{color: "#fff"}}>Upload File</MDBox>
-          </Button>
-        </label>
-
-      </Stack>   
-        </center>
-
-      )}
-    </Box>
+     <AddNotes />
     </div>
   ): showSem1 ?(
     <Sem1  sem1={sem1}/>
@@ -419,15 +341,26 @@ const showPastpaers = () =>{
   ): references ?(
     <div>
     <div style={{display: "flex", justifyContent: "space-between",alignItems: "center"}}>
-     <div></div><div>
-    <h3>References</h3>
+     <div style={{cursor: "pointer"}} onClick={addRef1}><b>ADD</b></div><div style={{cursor:"pointer"}} onClick={showRef}>
+    <h4>References</h4>
      </div>
      <div>
      <CancelPresentationIcon fontSize="medium" style={{cursor: "pointer"}} onClick={() => setReferences(false)}/>
      </div>
     </div>
     <hr />
-    <References />
+    {ref ?(
+     <>
+     <AvailableRef />
+     </>
+    ): addRef ?(
+      <>
+       <References/>
+      </>
+    ):(
+      <AvailableRef />
+    )}
+    
     </div>
   ):(
     <Sem1  sem1={sem1}/>
