@@ -229,13 +229,13 @@ const showPastpaers = () =>{
   <div >
   <Box sx={{ minWidth: 100,display: "flex" }}>
   <FormControl fullWidth>
-    <InputLabel id="demo-simple-select-label">Sementer 1</InputLabel>
+    <InputLabel id="demo-simple-select-label">Year 1 Sementer 1</InputLabel>
     <Select
       labelId="demo-simple-select-label"
       id="demo-simple-select"
       value={sem1}
       sx={{ height: 40}}
-      label="Semester 1"
+      label="Year 1 Sementer 1"
       onChange={handleChange}
     >
       <MenuItem onClick={handleClickOpen('paper')} value="CCS 001 COMMUNICATION SKILLS">CCS 001 COMMUNICATION SKILLS</MenuItem>
@@ -251,13 +251,13 @@ const showPastpaers = () =>{
   </FormControl>
 
   <FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">Sementer 2</InputLabel>
+  <InputLabel id="demo-simple-select-label">Year 2 Sementer 2</InputLabel>
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
     value={sem2}
     sx={{ height: 40}}
-    label="Sementer 2"
+    label="Year 2 Sementer 2"
     onChange={handleChange2}
   >
   <MenuItem onClick={handleClickOpen2('paper')} value="FCE 201 Phyics 2">FCE 201 Phyics 2</MenuItem>
