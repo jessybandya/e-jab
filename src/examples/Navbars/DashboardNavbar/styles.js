@@ -51,6 +51,7 @@ function navbar(theme, ownerState) {
     paddingBottom: pxToRem(8),
     paddingRight: absolute ? pxToRem(8) : 0,
     paddingLeft: absolute ? pxToRem(16) : 0,
+    zIndex:1,
 
     "& > *": {
       transition: transitions.create("all", {

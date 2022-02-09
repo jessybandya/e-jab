@@ -38,7 +38,7 @@ function Notes() {
     variant="gradient"
     color={sidenavColor}
     fullWidth
-    ><p>Past Papers (Select Your Year Of Study)</p></MDButton>
+    ><p>Academic Past Papers </p></MDButton>
     
   <div style={{display: "flex",flexWrap: "wrap",alignItems:"center",justifyContent: "center"}}>
     <MDButton

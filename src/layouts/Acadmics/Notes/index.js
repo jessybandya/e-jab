@@ -40,7 +40,7 @@ function Notes() {
     variant="gradient"
     color={sidenavColor}
     fullWidth
-    ><p>Academic Notes (Select Your Year Of Study)</p></MDButton>
+    ><p>Academic Notes</p></MDButton>
     
   <div style={{display: "flex",flexWrap: "wrap",alignItems:"center",justifyContent: "center"}}>
     <MDButton

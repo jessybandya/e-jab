@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 
 // Material Dashboard 2 React components
 import MDBox from "../../../../../components1/MDBox";
-import MDTypography from "../../../../../components1/MDTypography";
+import MDInput from "../../../../../components1/MDInput";
 
 import MDButton from "../../../../../components1/MDButton";
 
@@ -46,6 +46,12 @@ import References from './Sem1/References';
 import CommentIcon from '@mui/icons-material/Comment';
 import CancelPresentationIcon from '@mui/icons-material/CancelPresentation';
 import PsychologyIcon from '@mui/icons-material/Psychology';
+import { auth1, db } from '../../../../../components/firebase';
+import Avatar from '@mui/material/Avatar';
+import TextField from '@mui/material/TextField';
+import SendIcon from '@mui/icons-material/Send';
+
+
 
 const Input = styled('input')({
   display: 'none',
@@ -110,7 +116,24 @@ function Year1() {
    const [notesUnit, setNotesUnit] = React.useState('');
    const [comments, setComments] = useState(false)
    const [references, setReferences] = useState(false)
+   const [profileUserData, setProfileUserData] = useState();
+   const [value, setValue] = useState('');
 
+   const handleChange5 = (event) => {
+     setValue(event.target.value);
+   };
+
+   const sendNotesComment = (e) =>{
+       e.preventDefault()
+
+       setValue("")
+   }
+
+   useEffect(() => {
+     db.collection('users').doc(`${auth1?.currentUser?.uid}`).onSnapshot((doc) => {
+         setProfileUserData(doc.data());
+     });
+ }, [])
 
    const handleChange1 = (event) => {
     setNotesTopic(event.target.value);
@@ -215,9 +238,15 @@ const showPastpaers = () =>{
       label="Semester 1"
       onChange={handleChange}
     >
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 201 Phyics">FCE 201 Phyics</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 112 Mathematics">FCE 112 Mathematics</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="C001 COMMUNICATION SKILLS">C001 COMMUNICATION SKILLS</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="CCS 001 COMMUNICATION SKILLS">CCS 001 COMMUNICATION SKILLS</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 161 PURE MATHEMATICS">FCE 161 PURE MATHEMATICS</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 101 INTRODUCTION TO CIVIL ENGINEERING">FCE 101 INTRODUCTION TO CIVIL ENGINEERING</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="CCS HIV/AIDS">CCS HIV/AIDS</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 163 ENGINEERING MECHANICS (Statics)">FCE 163 ENGINEERING MECHANICS (Statics)</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 165 COMPUTER SCIENCE">FCE 165 COMPUTER SCIENCE</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 131 PHYSICS">FCE 131 PHYSICS</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 181 CHEMISTRY">FCE 181 CHEMISTRY</MenuItem>
+
     </Select>
   </FormControl>
 
@@ -285,7 +314,7 @@ const showPastpaers = () =>{
         label="Select Unit"
         onChange={handleChange4}
       >
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 201 Phyics">FCE 201 Phyics</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 201 Phyics">CCS 001 COMMUNICATION SKILLS</MenuItem>
       <MenuItem onClick={handleClickOpen('paper')} value="FCE 112 Mathematics">FCE 112 Mathematics</MenuItem>
       <MenuItem onClick={handleClickOpen('paper')} value="C001 COMMUNICATION SKILLS">C001 COMMUNICATION SKILLS</MenuItem>
       </Select>
@@ -353,14 +382,37 @@ const showPastpaers = () =>{
     <Sem1  sem1={sem1}/>
   ): comments ?(
     <div>
-    <div style={{display: "flex", justifyContent: "space-between",alignItems: "center"}}>
-     <div></div><div>
-    <h3>Comment(s)</h3>
+    {auth1 ?(
+      <div style={{display: "flex",alignItems: "center"}}>
+
+      
+      <MDInput
+      id="standard-multiline-flexible"
+      label={<div style={{color:"#8C8C8C",marginBottom:10}}>{profileUserData?.firstName} comment from here :)</div>}
+      multiline
+      maxRows={2}
+      value={value}
+      onChange={handleChange5}
+      variant="standard"
+      fullWidth
+      style={{backgroundColor:"#D1D1D1",border:"none",color:"black",borderRadius:2,marginRight:1}}
+    />  
+    <SendIcon fontSize="medium" style={{cursor: "pointer",marginRight:5}} onClick={sendNotesComment} />
+    <CancelPresentationIcon fontSize="medium" style={{cursor: "pointer"}} onClick={() => setComments(false)}/>
+
+
      </div>
-     <div>
-     <CancelPresentationIcon fontSize="medium" style={{cursor: "pointer"}} onClick={() => setComments(false)}/>
+    ):(
+      <div style={{display: "flex", justifyContent: "space-between",alignItems: "center"}}>
+      <div></div><div>
+     <h3>Comment(s)</h3>
+      </div>
+      <div>
+      <CancelPresentationIcon fontSize="medium" style={{cursor: "pointer"}} onClick={() => setComments(false)}/>
+      </div>
      </div>
-    </div>
+    )}
+
     <hr />
     <Comments />
     </div>

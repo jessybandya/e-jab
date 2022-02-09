@@ -19,7 +19,7 @@ import Features from "../Features/Features"
 import { Content } from '../Content/Content';
 import Carousel from '../Carousel/Carousel';
 import { heroOne, heroTwo, heroThree } from '../../data/HeroData';
-
+import Test from "./Test"
 
 
 
@@ -95,7 +95,10 @@ const Hero = () => {
 
           </Toolbar>
         </AppBar>
+
         <List>
+
+		
          <Features />
 		 <Content {...heroOne} />
 		 <Content {...heroTwo} />

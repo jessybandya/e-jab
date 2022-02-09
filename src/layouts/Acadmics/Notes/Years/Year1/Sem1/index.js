@@ -21,8 +21,8 @@ import {
   setWhiteSidenav,
 } from "../../../../../../context";
 
-import Maths1 from "./Maths1"
-import Phy1 from "./Phy1"
+import Maths1 from "./Units/Maths1"
+import Phy1 from "./Units/Phy1"
 
 
 function Sem1({ sem1 }) {
