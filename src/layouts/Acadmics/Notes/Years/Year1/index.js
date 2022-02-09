@@ -341,7 +341,11 @@ function Year1() {
   ): references ?(
     <div>
     <div style={{display: "flex", justifyContent: "space-between",alignItems: "center"}}>
-     <div style={{cursor: "pointer"}} onClick={addRef1}><b>ADD</b></div><div style={{cursor:"pointer"}} onClick={showRef}>
+     <div>
+     {auth1 &&(
+      <b style={{cursor: "pointer"}} onClick={addRef1}>ADD</b>
+     )}
+     </div><div style={{cursor:"pointer"}} onClick={showRef}>
     <h4>References</h4>
      </div>
      <div>
