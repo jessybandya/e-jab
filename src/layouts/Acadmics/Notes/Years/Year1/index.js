@@ -280,7 +280,9 @@ function Year1() {
 <MDBox><DialogTitle   style={{backgroundColor: "#1a2035",border: "1px solid #1a2035"}}
   id="scroll-dialog-title">
   <div style={{display: "flex",justifyContent: "space-between"}}>
-  <div><AddIcon onClick={showAddSem1} fontSize='medium' style={{cursor: "pointer",color: "#fff"}}/></div> <div><MDBox style={{color: "#fff"}}>Year 1  Sem I</MDBox></div> <div> <CancelIcon fontSize='medium' onClick={handleClose} style={{cursor: "pointer",color: "#fff"}}/></div>
+  <div>{auth1?.currentUser?.uid &&(
+    <AddIcon onClick={showAddSem1} fontSize='medium' style={{cursor: "pointer",color: "#fff"}}/>
+  )}</div> <div><MDBox style={{color: "#fff"}}>Year 1  Sem I</MDBox></div> <div> <CancelIcon fontSize='medium' onClick={handleClose} style={{cursor: "pointer",color: "#fff"}}/></div>
   </div>
   </DialogTitle></MDBox>
 
@@ -342,7 +344,7 @@ function Year1() {
     <div>
     <div style={{display: "flex", justifyContent: "space-between",alignItems: "center"}}>
      <div>
-     {auth1 &&(
+     {auth1?.currentUser?.uid &&(
       <b style={{cursor: "pointer"}} onClick={addRef1}>ADD</b>
      )}
      </div><div style={{cursor:"pointer"}} onClick={showRef}>
