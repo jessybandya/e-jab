@@ -47,9 +47,27 @@ import {
   setSidenavColor,
   setDarkMode,
 } from "../../context";
+import {
+  Box,
+  Button as ButtonChakra,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerHeader,
+  Flex,
+  Icon as IconChakra,
+  Link as LinkChakra,
+  Switch as SwitchChakra,
+  Text,
+  useColorMode,
+  useColorModeValue,
+} from "@chakra-ui/react";
 
 function Configurator() {
   const [controller, dispatch] = useMaterialUIController();
+  const { colorMode, toggleColorMode } = useColorMode();
+
   const {
     openConfigurator,
     fixedNavbar,
@@ -283,6 +301,10 @@ function Configurator() {
           <MDTypography variant="h6">Light / Dark</MDTypography>
 
           <Switch checked={darkMode} onChange={handleDarkMode} />
+          {/* <ButtonChakra onClick={toggleColorMode}>
+                  Toggle {colorMode === "light" ? "Dark" : "Light"}
+                </ButtonChakra> */}
+          {/* <Switch checked={colorMode} onChange={toggleColorMode} />  */}
         </MDBox>
         <Divider />
         <MDBox mt={3} mb={2}>

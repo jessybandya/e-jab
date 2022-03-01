@@ -79,11 +79,16 @@ import {
 import { MailIcon } from 'react-mail-icon'
 import MdBox from "../../../../components1/MDBox"
 import MDTypography from "../../../../components1/MDTypography"
+import { Modal } from 'antd';
+import Comments from "../Comments";
+import 'antd/dist/antd.css';
+
 
 const Post = forwardRef(
   ({ ownerId, title, timestamp, description, fileType, fileData,noLikes,postId }, ref) => {
     const classes = Style();
     const [expanded, setExpanded] = React.useState(false);
+    const [visible, setVisible] = useState(false);
     // const history = useHistory("")
     const handleExpandClick = () => {
       setExpanded(!expanded);
@@ -248,12 +253,31 @@ const likeHandle = (event) => {
     return (
       <>
       <div style={{display: "flex"}}>
+        <div style={{backgroundColor:"red"}}> 
+
+        <Modal
+        style={{ top: 20 }}
+        visible={visible}
+        onCancel={() => setVisible(false)}
+        width={800}
+        bodyStyle={{
+          backgroundColor: '#344767'
+      }}
+      >
+
+        <Comments />
+
+        {/* <PostDetails /> */}
+      </Modal>
+        </div>
+
+
       <MdBox ref={ref} style={{border: "2px solid #0A84FF",padding:5,borderRadius:10,marginTop:5}} className="post1" >
         <div className={classes.post__header}>
           <Avatar src={profileUserData?.photoURL} style={{marginTop:-30}}/>
           <div className={classes.header__info}>
-          <MDTypography style={{fontSize:18}}>
-          <h4>{profileUserData?.firstName} {profileUserData?.lastName}</h4>
+          <MDTypography style={{fontSize:22,fontWeight:"800"}}>
+          {profileUserData?.firstName} {profileUserData?.lastName}
           </MDTypography>
             <p style={{marginLeft:-3}}>
 
@@ -307,12 +331,15 @@ const likeHandle = (event) => {
                 </div>
             )}
 
-                <Link to={`/postview/${postId}/${ownerId}`}>
                 <div className="comment1" style={{alignItems:"center"}}>
-                    <i className="comment2" />
-                    <h3 class="dope">Comment</h3>
+                    <i className="comment2" onClick={() => {
+              setVisible(true);
+            }}/>
+                    <h3 class="dope" 
+              onClick={() => {
+              setVisible(true);
+            }}>Comment(s)</h3>
                 </div>
-                </Link>
                 <div className="share1" >
                     <i onClick={handleExpandClick} className="share2" />
                     <h3 onClick={handleExpandClick}>Share</h3>
