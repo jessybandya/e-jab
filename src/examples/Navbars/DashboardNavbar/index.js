@@ -55,6 +55,7 @@ import {
   setOpenConfigurator,
 } from "../../../context";
 import { auth1 } from "../../../components/firebase"
+import MDTypography from "../../../components1/MDTypography";
 function DashboardNavbar({ absolute, light, isMini }) {
   const [navbarType, setNavbarType] = useState();
   const [controller, dispatch] = useMaterialUIController();
@@ -162,18 +163,59 @@ function DashboardNavbar({ absolute, light, isMini }) {
 
 
 
-              <IconButton
+
+
+
+        <div>
+        {!auth1?.currentUser?.uid ?(
+             <div style={{display:"flex"}}>
+               <div>
+                 <Link to="/authentication/sign-in">
+                 <MDTypography>
+                 <span>SignIn</span>
+               </MDTypography>
+                 </Link>
+
+               </div>
+                <div style={{marginLeft:5}}>
+                  <Link to="/authentication/sign-up">
+                  <MDTypography>
+                 <span>SignUp</span>
+               </MDTypography>
+                  </Link>
+
+               </div>
+                <div>
+                {renderMenu()}
+                <IconButton
                 size="small"
                 disableRipple
                 color="inherit"
-                sx={navbarIconButton}
-                onClick={handleConfiguratorOpen}
+                onClick={handleMiniSidenav}
               >
-                <Icon sx={iconsStyle}>settings</Icon>
+                <Icon sx={iconsStyle} fontSize="medium">
+                  {miniSidenav ? "menu_open" : "menu"}
+                </Icon>
               </IconButton>
+                </div>
+             </div>
+              ):(
+                <>
+              {renderMenu()}
+                <div style={{display:"flex"}}>
 
-
-              {auth1?.currentUser?.uid &&(
+                <div>
+              <IconButton
+              size="small"
+              disableRipple
+              color="inherit"
+              sx={navbarIconButton}
+              onClick={handleConfiguratorOpen}
+            >
+              <Icon sx={iconsStyle}>settings</Icon>
+            </IconButton>
+            </div>
+            {/* <div>
                 <IconButton
                 size="small"
                 disableRipple
@@ -188,19 +230,30 @@ function DashboardNavbar({ absolute, light, isMini }) {
               <Icon sx={iconsStyle}>notifications</Icon>
             </Badge>
               </IconButton>
+              
+              </div> */}
+              <div>
+                <IconButton
+                size="small"
+                disableRipple
+                color="inherit"
+                onClick={handleMiniSidenav}
+              >
+                <Icon sx={iconsStyle} fontSize="medium">
+                  {miniSidenav ? "menu_open" : "menu"}
+                </Icon>
+              </IconButton>
+                </div>
+                </div>
+
+                </>
               )}
 
-              {renderMenu()}
-              <IconButton
-              size="small"
-              disableRipple
-              color="inherit"
-              onClick={handleMiniSidenav}
-            >
-              <Icon sx={iconsStyle} fontSize="medium">
-                {miniSidenav ? "menu_open" : "menu"}
-              </Icon>
-            </IconButton>
+
+
+
+        </div>
+
             </MDBox>
           </MDBox>
         )}

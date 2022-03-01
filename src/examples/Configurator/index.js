@@ -64,6 +64,7 @@ import {
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
+import typography from "../../assets/theme/base/typography";
 
 function Configurator() {
   const [controller, dispatch] = useMaterialUIController();
@@ -152,6 +153,9 @@ function Configurator() {
     },
   });
 
+  const { size } = typography;
+
+
   return (
     <ConfiguratorRoot variant="permanent" ownerState={{ openConfigurator }}>
       <MDBox
@@ -162,7 +166,12 @@ function Configurator() {
         pb={0.5}
         px={3}
       >
-
+        <MDBox>
+          <MDTypography variant="h5">{profileUserData?.firstName} {profileUserData?.lastName}</MDTypography>
+          <MDTypography variant="body2" color="text">
+          @{profileUserData?.username}
+          </MDTypography>
+        </MDBox>
 
         <Icon
           sx={({ typography: { size }, palette: { dark, white } }) => ({
@@ -180,17 +189,6 @@ function Configurator() {
       </MDBox>
 
       <Divider />
-      <MDBox>
-          <MDTypography variant="h5">
-
-            <center><img src={profileUserData?.photoURL} style={{height:100,width:100,borderRadius:100/2,objectFit:"cover"}} /></center>
-          </MDTypography>
-          <MDTypography variant="body2" color="text">
-            <center style={{cursor:"pointer"}}><b>{profileUserData?.firstName} {profileUserData?.lastName}</b></center>
-            <center style={{cursor:"pointer"}}>{profileUserData?.username}</center>
-          </MDTypography>
-        </MDBox>
-        <Divider />
 
       <MDBox pt={0.5} pb={3} px={3}>
         <MDBox>
@@ -320,59 +318,19 @@ function Configurator() {
           {/* <Switch checked={colorMode} onChange={toggleColorMode} />  */}
         </MDBox>
         <Divider />
-        {/* <MDBox mt={3} mb={2}>
-          <MDButton
-            // component={Link}
-            // href="https://www.creative-tim.com/learning-lab/react/quick-start/material-dashboard/"
-            // target="_blank"
-            rel="noreferrer"
-            color={darkMode ? "light" : "dark"}
-            variant="outlined"
-            fullWidth
-          >
-            Follow Us
-          </MDButton>
-        </MDBox> */}
-        <MDBox display="flex" justifyContent="center">
 
-        </MDBox>
-        <MDBox mt={2} textAlign="center">
-
-
-          {/* <MDBox display="flex" justifyContent="center">
-            <MDBox mr={1.5}>
-              <MDButton
-                component={Link}
-                href="#"
-                target="_blank"
-                rel="noreferrer"
-                color="dark"
-              >
-                <TwitterIcon />
-                &nbsp; Tweet
-              </MDButton>
-            </MDBox>
-            <MDButton
-              component={Link}
-              href="#"
-              target="_blank"
-              rel="noreferrer"
-              color="dark"
-            >
-              <FacebookIcon />
-              &nbsp; Share
-            </MDButton>
-          </MDBox> */}
-      <MDBox
+        <MDBox
+        mt={8}
         display="flex"
         justifyContent="center"
         alignItems="center"
         flexWrap="wrap"
         color="text"
+        fontSize={size.sm}
         px={1.5}
       >
         &copy; {new Date().getFullYear()}, made with
-        <MDBox  color="text" mb={-0.5} mx={0.25}>
+        <MDBox fontSize={size.md} color="text" mb={-0.5} mx={0.25}>
           <Icon color="inherit" fontSize="inherit">
             favorite
           </Icon>
@@ -385,7 +343,7 @@ function Configurator() {
         </Link>
         for a better web.
       </MDBox>
-        </MDBox>
+
       </MDBox>
     </ConfiguratorRoot>
   );
