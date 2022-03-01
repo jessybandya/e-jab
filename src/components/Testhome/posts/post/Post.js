@@ -107,7 +107,15 @@ const Post = forwardRef(
     const [posterImage, setPosterImage] = useState('')
     const [shares, setShares] = useState('');
     const [shareCount, setShareCount] = useState(0);
+    const [postIdMain, setPostIdMain] = useState("")
+    const [postOwnerId, setPostOwnerId] = useState("")
 
+
+    const takeIdAndModal = (postId) =>{
+      setVisible(true)
+      setPostIdMain(`${postId}`)
+      setPostOwnerId(`${ownerId}`)
+    }
     const share = (event) => {
       event.preventDefault(); 
 
@@ -265,7 +273,7 @@ const likeHandle = (event) => {
       }}
       >
 
-        <Comments />
+        <Comments postId={postIdMain} ownerId={postOwnerId}/>
 
         {/* <PostDetails /> */}
       </Modal>
@@ -337,7 +345,7 @@ const likeHandle = (event) => {
             }}/>
                     <h3 class="dope" 
               onClick={() => {
-              setVisible(true);
+                takeIdAndModal(`${postId}, ${ownerId}`)
             }}>Comment(s)</h3>
                 </div>
                 <div className="share1" >
