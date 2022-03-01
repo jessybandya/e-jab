@@ -234,7 +234,7 @@ const likeHandle = (event) => {
             {/* <img src={Love} style={{ order: `${loveIconOrder} ` }} alt="love-icon" />
             <img src={Care} style={{ order: `${careIconOrder} ` }} alt="care-icon" /> */}
           </div>
-          <h4 style={{marginTop:0}}><MDTypography style={{fontSize:16}}>{noLikes} {noLikes == 1 ? "Like" : "Likes"}</MDTypography></h4>
+          <h4 style={{marginTop:10}}><MDTypography style={{fontSize:16}}>{noLikes} {noLikes == 1 ? "Like" : "Likes"}</MDTypography></h4>
           <section>
             <h4><MDTypography style={{fontSize:16}}>{commentsCount} Comment(s)</MDTypography></h4>
             <h4><MDTypography style={{fontSize:16}}>{shareCount} Shares</MDTypography></h4>
@@ -323,9 +323,9 @@ const likeHandle = (event) => {
             {auth1?.currentUser &&(
                 <div className="like1" onClick={likeHandle}>
                     {show2 ==! "textforlike" ?(
-                    <ThumbUpOutlinedIcon className={show} />
+                    <ThumbUpOutlinedIcon style={{marginTop:-8}} className={show} />
                     ):(
-                      <ThumbUpAltIcon style={{marginTop:0}} className={show2}/>
+                      <ThumbUpAltIcon style={{marginTop:-8}} className={show2}/>
                     )}
                     <h3 className={show2}>Like</h3>
                 </div>

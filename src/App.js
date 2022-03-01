@@ -36,6 +36,12 @@ import Nopage from "./layouts/Nopage"
 // Material Dashboard 2 React contexts
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "./context";
 import { auth1 } from "./components/firebase"
+import Fade from "react-reveal/Fade";
+import Flip from "react-reveal/Flip";
+import Chatbot from "react-chatbot-kit";
+import config from "./chatBot/ChatBotConfig";
+import MessageParser from "./chatBot/MessageParser";
+import ActionProvider from "./chatBot/ActionProvider";
 // Images
 import brandWhite from "./assets/images/logo-ct.png";
 import brandDark from "./assets/images/logo-ct-dark.png";
@@ -44,6 +50,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App() {
+  const [showBot, toggleBot] = useState(false);
   const [controller, dispatch] = useMaterialUIController();
   const {
     miniSidenav,
@@ -165,7 +172,7 @@ export default function App() {
                 onMouseLeave={handleOnMouseLeave}
               />
               <Configurator />
-              {configsButton}
+              {/* {configsButton} */}
             </>
           )}
           {layout === "vr" && <Configurator />}
@@ -189,7 +196,7 @@ export default function App() {
                 onMouseLeave={handleOnMouseLeave}
               />
               <Configurator />
-              {configsButton}
+              {/* {configsButton} */}
             </>
           )}
           {layout === "vr" && <Configurator />}
@@ -221,7 +228,10 @@ export default function App() {
               onMouseLeave={handleOnMouseLeave}
             />
             <Configurator />
-            {configsButton}
+            {/* {configsButton} */}
+
+
+
           </>
         )}
         {layout === "vr" && <Configurator />}
@@ -245,7 +255,7 @@ export default function App() {
               onMouseLeave={handleOnMouseLeave}
             />
             <Configurator />
-            {configsButton}
+            {/* {configsButton} */}
           </>
         )}
         {layout === "vr" && <Configurator />}

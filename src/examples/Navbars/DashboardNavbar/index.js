@@ -159,13 +159,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
               <MDInput label="Search here" />
             </MDBox>
             <MDBox color={light ? "white" : "inherit"}>
-            {auth1?.currentUser?.uid &&(
-              <Link to="/profile">
-                <IconButton sx={navbarIconButton} size="small" disableRipple>
-                  <Icon sx={iconsStyle}>account_circle</Icon>
-                </IconButton>
-              </Link>
-            )}
+
 
 
               <IconButton
@@ -201,7 +195,6 @@ function DashboardNavbar({ absolute, light, isMini }) {
               size="small"
               disableRipple
               color="inherit"
-              sx={navbarMobileMenu}
               onClick={handleMiniSidenav}
             >
               <Icon sx={iconsStyle} fontSize="medium">

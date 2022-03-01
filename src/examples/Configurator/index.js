@@ -33,6 +33,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import MDBox from "../../components1/MDBox";
 import MDTypography from "../../components1/MDTypography";
 import MDButton from "../../components1/MDButton";
+import {db, storage, auth1 } from "../../components/firebase";
 
 // Custom styles for the Configurator
 import ConfiguratorRoot from "./ConfiguratorRoot";
@@ -67,6 +68,12 @@ import {
 function Configurator() {
   const [controller, dispatch] = useMaterialUIController();
   const { colorMode, toggleColorMode } = useColorMode();
+  const [profileUserData, setProfileUserData] = useState();
+  useEffect(() => {
+    db.collection('users').doc(`${auth1?.currentUser?.uid}`).onSnapshot((doc) => {
+        setProfileUserData(doc.data());
+    });
+}, [])
 
   const {
     openConfigurator,
@@ -155,12 +162,7 @@ function Configurator() {
         pb={0.5}
         px={3}
       >
-        <MDBox>
-          <MDTypography variant="h5">Website Configurator</MDTypography>
-          <MDTypography variant="body2" color="text">
-            See Options.
-          </MDTypography>
-        </MDBox>
+
 
         <Icon
           sx={({ typography: { size }, palette: { dark, white } }) => ({
@@ -178,6 +180,17 @@ function Configurator() {
       </MDBox>
 
       <Divider />
+      <MDBox>
+          <MDTypography variant="h5">
+
+            <center><img src={profileUserData?.photoURL} style={{height:100,width:100,borderRadius:100/2,objectFit:"cover"}} /></center>
+          </MDTypography>
+          <MDTypography variant="body2" color="text">
+            <center style={{cursor:"pointer"}}><b>{profileUserData?.firstName} {profileUserData?.lastName}</b></center>
+            <center style={{cursor:"pointer"}}>{profileUserData?.username}</center>
+          </MDTypography>
+        </MDBox>
+        <Divider />
 
       <MDBox pt={0.5} pb={3} px={3}>
         <MDBox>
@@ -307,7 +320,7 @@ function Configurator() {
           {/* <Switch checked={colorMode} onChange={toggleColorMode} />  */}
         </MDBox>
         <Divider />
-        <MDBox mt={3} mb={2}>
+        {/* <MDBox mt={3} mb={2}>
           <MDButton
             // component={Link}
             // href="https://www.creative-tim.com/learning-lab/react/quick-start/material-dashboard/"
@@ -319,14 +332,14 @@ function Configurator() {
           >
             Follow Us
           </MDButton>
-        </MDBox>
+        </MDBox> */}
         <MDBox display="flex" justifyContent="center">
 
         </MDBox>
         <MDBox mt={2} textAlign="center">
 
 
-          <MDBox display="flex" justifyContent="center">
+          {/* <MDBox display="flex" justifyContent="center">
             <MDBox mr={1.5}>
               <MDButton
                 component={Link}
@@ -349,10 +362,29 @@ function Configurator() {
               <FacebookIcon />
               &nbsp; Share
             </MDButton>
-          </MDBox>
-          <MDBox mb={0.5}>
-          <MDTypography variant="h6">Thank you for sharing!</MDTypography>
+          </MDBox> */}
+      <MDBox
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexWrap="wrap"
+        color="text"
+        px={1.5}
+      >
+        &copy; {new Date().getFullYear()}, made with
+        <MDBox  color="text" mb={-0.5} mx={0.25}>
+          <Icon color="inherit" fontSize="inherit">
+            favorite
+          </Icon>
         </MDBox>
+        by
+        <Link  target="_blank">
+          <MDTypography variant="button" fontWeight="medium">
+            &nbsp;Aces Team&nbsp;
+          </MDTypography>
+        </Link>
+        for a better web.
+      </MDBox>
         </MDBox>
       </MDBox>
     </ConfiguratorRoot>
