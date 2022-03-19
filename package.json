@@ -35,6 +35,7 @@
     "emoji-mart": "^3.0.1",
     "extract-zip": "^2.0.1",
     "firebase": "^8.10.0",
+    "flutterwave-react-v3": "^1.2.0",
     "framer-motion": "^6.2.1",
     "from": "^0.1.7",
     "fs-extra": "^10.0.0",

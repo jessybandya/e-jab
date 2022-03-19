@@ -14,7 +14,7 @@ Coded by www.creative-tim.com
 */
 
 import { useState } from "react";
-
+import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 // @mui material components
 import Grid from "@mui/material/Grid";
 import Card from "@mui/material/Card";
@@ -30,6 +30,7 @@ import MDSnackbar from "../../components1/MDSnackbar";
 import DashboardLayout from "../../examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "../../examples/Navbars/DashboardNavbar";
 import Footer from "../../examples/Footer";
+import { db } from "../../components/firebase";
 
 function Showcase() {
   const [successSB, setSuccessSB] = useState(false);
@@ -110,11 +111,74 @@ function Showcase() {
     />
   );
 
+
+  const config = {
+    public_key: 'FLWPUBK-cdcdf33bafedf13c157a3d4ac1999332-X',
+    tx_ref: Date.now(),
+    amount: 3,
+    currency: 'KES',
+    payment_options: 'mobilemoney',
+    customer: {
+      email: 'jessy.bandya5@gmail.com',
+      phonenumber: '0768405710',
+      name: 'Jessy Bandya',
+    },
+    customizations: {
+      title: 'UoN ACES',
+      description: 'Payment for past paper solutions in cart',
+      logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
+    },
+  };
+
+
+  const havePaid = () => {
+
+
+      db.collection("paidSolutions").add({
+        paid:true,
+        name:"Jaby Boy",
+        soltionId:"",
+        questionId:"",
+        personId:"",
+        timestamp: Date.now(),
+    }).then(() => alert("You can now access the solutions to this quiz"));
+
+  
+}
+
+  const handleFlutterPayment = useFlutterwave(config);
+
+  const afterPay = () =>{
+
+    handleFlutterPayment({
+      callback: (response) => {
+        //  console.log(response);
+         if(response.status == "successful"){
+          havePaid()
+         }else{
+           alert("Transaction did not work!")
+         }
+          closePaymentModal() // this will close the modal programmatically
+      },
+      onClose: () => {},
+    });
+  }
+
   return (
     <DashboardLayout>
     <DashboardNavbar />
     <MDBox py={3}>
-    <h1>This Showcase Page</h1>
+    {/* <h1>This Showcase Page</h1> */}
+
+
+<button
+  onClick={() => {
+    afterPay()
+  }}
+>
+  Pay For Solutions
+</button>
+
     </MDBox>
     <Footer />
   </DashboardLayout>
