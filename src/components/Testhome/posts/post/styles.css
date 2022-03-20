@@ -417,3 +417,22 @@ user-select: none;
     margin-bottom: 8px;
     display:none
 }
+
+
+.share4 {
+    display: flex;
+    flex-direction: row;
+    height: 28px;
+    width: 150px;
+    justify-content: center;
+    padding-top: 6px;
+}
+
+.share4 > h3 {
+    font-size: 13px;
+    color: #A4A7AB;
+    font-weight: 600;
+    margin-top: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: -50px;
+}

@@ -6,9 +6,9 @@ import { db,auth1 } from "../../../firebase";
 import Post from "./Post1";
 import swal from "@sweetalert/with-react";
 
-function Comments({ postId, ownerId }) {
+function Comments({ postId }) {
   const [posts, setPosts] = useState([]);
-  const [comment, setComment] = React.useState('');
+  const [comment, setComment] = useState('');
 
   const commentPost = (event) => {
     event.preventDefault(); 
@@ -16,8 +16,8 @@ function Comments({ postId, ownerId }) {
     if(!comment){
       swal("🔴 You cannot add an empty comment!")
     }else{
-      db.collection("posts").doc(`${postId}`).collection("comments").add({
-        ownerPostId:ownerId,
+      db.collection('posts').doc(postId).collection("comments").add({
+        ownerPostId:"id",
         read: false,
         count:false,
         postId,
@@ -43,6 +43,7 @@ function Comments({ postId, ownerId }) {
     <div className="ml-4 pl-2 mr-4 pr-2 mt-15">
       <div className="comment__details">
         <div className="comments">
+          <h1>{postId}</h1>
         {Array.from(posts).map((post) => (
 
 <Post

@@ -343,10 +343,12 @@ const likeHandle = (event) => {
                     <i className="comment2" onClick={() => {
               setVisible(true);
             }}/>
-                    <h3 class="dope" 
-              onClick={() => {
-                takeIdAndModal(`${postId}, ${ownerId}`)
-            }}>Comment(s)</h3>
+
+
+<Link class="share4"  to={`/postview/${postId}/${ownerId}`}>
+                    <h3  
+>Comment(s)</h3>
+</Link>
                 </div>
                 <div className="share1" >
                     <i onClick={handleExpandClick} className="share2" />

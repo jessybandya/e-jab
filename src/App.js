@@ -33,6 +33,7 @@ import createCache from "@emotion/cache";
 import routes from "./routes";
 import routes1 from "./routes1";
 import Nopage from "./layouts/Nopage"
+import PostView from "./layouts/PostView"
 // Material Dashboard 2 React contexts
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "./context";
 import { auth1 } from "./components/firebase"
@@ -179,6 +180,7 @@ export default function App() {
           <Routes>
             {getRoutes(routes)}
             <Route exact path="/authentication/sign-in" element={<SignIn />} />
+            <Route exact path="/postview/:id/:uid" element={<PostView />} />
 
             <Route path="*" element={<Navigate to="/announcements" />} />
              </Routes>
@@ -203,6 +205,7 @@ export default function App() {
           <Routes>
             {getRoutes(routes1)}
             <Route exact path="/authentication/sign-in" element={<SignIn />} />
+            <Route exact path="/postview/:id/:uid" element={<PostView />} />
 
             <Route path="*" element={<Navigate to="/announcements" />} />
             
@@ -238,6 +241,7 @@ export default function App() {
         <Routes>
           {getRoutes(routes)}
           <Route exact path="/authentication/sign-in" element={<SignIn />} />
+          <Route exact path="/postview/:id/:uid" element={<PostView />} />
 
           <Route path="*" element={<Navigate to="/announcements" />} />
         </Routes>
@@ -262,6 +266,7 @@ export default function App() {
         <Routes>
           {getRoutes(routes1)}
           <Route exact path="/authentication/sign-in" element={<SignIn />} />
+          <Route exact path="/postview/:id/:uid" element={<PostView />} />
 
           <Route path="*" element={<Navigate to="/announcements" />} />
           

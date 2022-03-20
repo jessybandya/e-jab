@@ -123,6 +123,7 @@ function Showcase() {
       phonenumber: '0768405710',
       name: 'Jessy Bandya',
     },
+    // mobilemoney
     customizations: {
       title: 'UoN ACES',
       description: 'Payment for past paper solutions in cart',
