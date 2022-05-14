@@ -19,16 +19,25 @@ import Lecturers from "./layouts/Lecturers";
 import Badge from '@mui/material/Badge';
 // @mui icons
 import Icon from "@mui/material/Icon";
- 
+import Announcements from "./layouts/Announcements";
+
 
 const routes = [
   {
     type: "collapse",
+    name: "Home",
+    key: "home",
+    icon: <Icon fontSize="small">home</Icon>,
+    route: "/home",
+    component: <Home />,
+  },
+  {
+    type: "collapse",
     name: "Announcements",
     key: "announcements",
-    icon: <Icon fontSize="small">home</Icon>,
+    icon: <Icon fontSize="small">language</Icon>,
     route: "/announcements",
-    component: <Home />,
+    component: <Announcements />,
   },
   {
     type: "collapse",

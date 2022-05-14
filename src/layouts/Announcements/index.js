@@ -23,7 +23,6 @@ import { motion } from "framer-motion";
 import Form from "../../components/Testhome/form/Form"
 import { auth1 } from "../../components/firebase"
 import Posts from "../../components/Testhome/posts/Posts"
-import { Link } from 'react-router-dom';
 
 const flip = {
   hidden: {
@@ -101,14 +100,17 @@ function Home() {
   return <div>
   <DashboardLayout>
   <DashboardNavbar />
-  <MDBox
-        color="text"
-        fontSize={25}
+  <MDBox py={0}>
+   {auth1?.currentUser &&(
+     <>
+     <Form />
+     </>
+   )}
+   <Posts />
+  <MDTypography>
 
-      >
-
-        <span style={{fontWeight: 'bold'}}>Home</span>
-      </MDBox>
+  </MDTypography>
+  </MDBox>
   <Footer />
 </DashboardLayout>
   </div>;

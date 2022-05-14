@@ -62,14 +62,14 @@ function Footer({ company, links }) {
       >
         &copy; {new Date().getFullYear()}, made with
         <MDBox fontSize={size.md} color="text" mb={-0.5} mx={0.25}>
-          <Icon color="inherit" fontSize="inherit">
+          <Icon style={{color: "red"}} fontSize="inherit">
             favorite
           </Icon>
         </MDBox>
         by
         <Link href={href} target="_blank">
           <MDTypography variant="button" fontWeight="medium">
-            &nbsp;Aces Team&nbsp;
+            &nbsp;Jessy Bandya&nbsp;
           </MDTypography>
         </Link>
         for a better web.

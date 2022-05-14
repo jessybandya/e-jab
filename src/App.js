@@ -182,7 +182,7 @@ export default function App() {
             <Route exact path="/authentication/sign-in" element={<SignIn />} />
             <Route exact path="/postview/:id/:uid" element={<PostView />} />
 
-            <Route path="*" element={<Navigate to="/announcements" />} />
+            <Route path="*" element={<Navigate to="/home" />} />
              </Routes>
           </>
         ):(
@@ -207,7 +207,7 @@ export default function App() {
             <Route exact path="/authentication/sign-in" element={<SignIn />} />
             <Route exact path="/postview/:id/:uid" element={<PostView />} />
 
-            <Route path="*" element={<Navigate to="/announcements" />} />
+            <Route path="*" element={<Navigate to="/home" />} />
             
             </Routes>
           </>
@@ -243,7 +243,7 @@ export default function App() {
           <Route exact path="/authentication/sign-in" element={<SignIn />} />
           <Route exact path="/postview/:id/:uid" element={<PostView />} />
 
-          <Route path="*" element={<Navigate to="/announcements" />} />
+          <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
         </>
       ):(
@@ -268,7 +268,7 @@ export default function App() {
           <Route exact path="/authentication/sign-in" element={<SignIn />} />
           <Route exact path="/postview/:id/:uid" element={<PostView />} />
 
-          <Route path="*" element={<Navigate to="/announcements" />} />
+          <Route path="*" element={<Navigate to="/home" />} />
           
           </Routes>
         </>
