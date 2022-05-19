@@ -359,15 +359,8 @@ var s = new Date(post?.timestamp).toLocaleTimeString("en-US")
           <span style={{fontSize:18,fontWeight:"bold"}}>@{profileUserData?.username}</span>
           </div>
         </MDTypography>
-          <p style={{marginLeft:-3}}>
+        <Moment format='MMMM Do YYYY, h:mm:ss a'>{post?.timestamp}</Moment>    
 
-              {/* <ReactTimeago date={new Date(post?.timestamp?.toDate()).toUTCString()} units="minute" /> */}
-               {/* {date.getDay()} */}
-               {""+date.getDate()+
-          "/"+(date.getMonth()+1)+
-          "/"+date.getFullYear()}
-              {"  "+s}
-          </p>
         </div>
         <MoreHorizOutlinedIcon style={{marginTop:-40}}/>
       </div>
@@ -455,7 +448,7 @@ var s = new Date(post?.timestamp).toLocaleTimeString("en-US")
 <div>
 <EmailShareButton
  title={post?.title}
- url={`https://odero-85bdb.web.app/postview/${id}/${uid}`}
+ url={`https://aces-2e0b5.web.app/postview/${id}/${uid}`}
  hashtag={"#UoN_ACES"}
  description={post?.description}
 >
@@ -466,7 +459,7 @@ var s = new Date(post?.timestamp).toLocaleTimeString("en-US")
 <div>
 <FacebookShareButton
  title={post?.title}
- url={`https://odero-85bdb.web.app/postview/${id}/${uid}`}
+ url={`https://aces-2e0b5.web.app/postview/${id}/${uid}`}
  // quote={"Talking is easy just show me the codes."}
  hashtag={"#UoN_ACES"}
  description={post?.description}
@@ -478,7 +471,7 @@ var s = new Date(post?.timestamp).toLocaleTimeString("en-US")
 <div>
 <TwitterShareButton
  title={post?.title}
- url={`https://odero-85bdb.web.app/postview/${id}/${uid}`}
+ url={`https://aces-2e0b5.web.app/postview/${id}/${uid}`}
  hashtag={"#UoN_ACES"}
  description={post?.description}
 >
@@ -488,7 +481,7 @@ var s = new Date(post?.timestamp).toLocaleTimeString("en-US")
 <div>
 <WhatsappShareButton
  title={post?.title}
- url={`https://odero-85bdb.web.app/postview/${id}/${uid}`}
+ url={`https://aces-2e0b5.web.app/postview/${id}/${uid}`}
  hashtag={"#UoN_ACES"}
  description={post?.description}
 >
@@ -499,7 +492,7 @@ var s = new Date(post?.timestamp).toLocaleTimeString("en-US")
        <div>
 <LinkedinShareButton
  title={post?.title}
- url={`https://odero-85bdb.web.app/postview/${id}/${uid}`}
+ url={`https://aces-2e0b5.web.app/postview/${id}/${uid}`}
  hashtag={"#UoN_ACES"}
  description={post?.description}
 >
@@ -514,14 +507,14 @@ var s = new Date(post?.timestamp).toLocaleTimeString("en-US")
 
     </MDBox>
     {/* <Picker onEmojiClick={onEmojiClick} /> */}
-
+{auth1?.currentUser?.uid &&(
     <MDBox style={{display:'flex',alignItems:'center'}}>
     <div style={{marginTop:10}} className="post1">
       <MDInput 
       multiline
       rows={1.5}
       label=""
-      placeholder={`@${profileUserData?.username} comment here...`}
+      placeholder={`@${profileUserData1?.username} comment here...`}
       value={addComment}
       style={{ width: "100%" }}
       onChange={(e) => {
@@ -536,31 +529,9 @@ var s = new Date(post?.timestamp).toLocaleTimeString("en-US")
     <SendIcon onClick={commentPost} style={{cursor: "pointer"}} fontSize="100px"/>
    )}
 </MDBox>
+)}
 
-<div class="container mt-5">
-    <div class="d-flex justify-content-center row">
-        <div class="col-md-8">
-            <div class="d-flex flex-column comment-section">
-                <div class="bg-white p-2">
-                    <div class="d-flex flex-row user-info"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40"/>
-                        <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">Marry Andrews</span><span class="date text-black-50">Shared publicly - Jan 2020</span></div>
-                    </div>
-                    <div class="mt-2">
-                        <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                </div>
-                <div class="bg-white">
-                    <div class="d-flex flex-row fs-12">
-                        <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
-                        <div class="like p-2 cursor"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span></div>
-                        <div class="like p-2 cursor"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
-                    </div>
-                </div>
 
-            </div>
-        </div>
-    </div>
-</div>
 
     </DashboardLayout>
   )

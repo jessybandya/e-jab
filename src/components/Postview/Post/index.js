@@ -94,6 +94,7 @@ import Moment from 'react-moment';
 import Comments from "../Comments"
 import swal from "@sweetalert/with-react";
 import "react-responsive-modal/styles.css";
+
   const useStyles = makeStyles((theme) => ({
     card: {
       marginBottom: theme.spacing(5),
@@ -414,7 +415,7 @@ setComments1("")
 <div>
   <EmailShareButton
    title={post?.title}
-   url={`https://odero-85bdb.web.app/postview/${id}/${uid}`}
+   url={`https://aces-2e0b5.web.app/postview/${id}/${uid}`}
    hashtag={"#UoN_ACES"}
    description={post?.description}
  >
@@ -425,7 +426,7 @@ setComments1("")
   <div>
   <FacebookShareButton
    title={post?.title}
-   url={`https://odero-85bdb.web.app/postview/${id}/${uid}`}
+   url={`https://aces-2e0b5.web.app/postview/${id}/${uid}`}
    // quote={"Talking is easy just show me the codes."}
    hashtag={"#UoN_ACES"}
    description={post?.description}
@@ -437,7 +438,7 @@ setComments1("")
   <div>
   <TwitterShareButton
    title={post?.title}
-   url={`https://odero-85bdb.web.app/postview/${id}/${uid}`}
+   url={`https://aces-2e0b5.web.app/postview/${id}/${uid}`}
    hashtag={"#UoN_ACES"}
    description={post?.description}
  >
@@ -447,7 +448,7 @@ setComments1("")
   <div>
   <WhatsappShareButton
    title={post?.title}
-   url={`https://odero-85bdb.web.app/postview/${id}/${uid}`}
+   url={`https://aces-2e0b5.web.app/postview/${id}/${uid}`}
    hashtag={"#UoN_ACES"}
    description={post?.description}
  >
@@ -458,7 +459,7 @@ setComments1("")
          <div>
   <LinkedinShareButton
    title={post?.title}
-   url={`https://odero-85bdb.web.app/postview/${id}/${uid}`}
+   url={`https://aces-2e0b5.web.app/postview/${id}/${uid}`}
    hashtag={"#UoN_ACES"}
    description={post?.description}
  >
