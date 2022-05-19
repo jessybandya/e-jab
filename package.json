@@ -33,6 +33,7 @@
     "dateformat": "^5.0.2",
     "dayjs": "^1.10.7",
     "emoji-mart": "^3.0.1",
+    "emoji-picker-react": "^3.5.1",
     "extract-zip": "^2.0.1",
     "firebase": "^8.10.0",
     "flutterwave-react-v3": "^1.2.0",

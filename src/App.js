@@ -206,9 +206,7 @@ export default function App() {
             {getRoutes(routes1)}
             <Route exact path="/authentication/sign-in" element={<SignIn />} />
             <Route exact path="/postview/:id/:uid" element={<PostView />} />
-
-            <Route path="*" element={<Navigate to="/home" />} />
-            
+            <Route path="*" element={<Navigate to="/home" />} />            
             </Routes>
           </>
         )}

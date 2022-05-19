@@ -1,118 +1,125 @@
-import React, {useEffect} from 'react';
+/**
+=========================================================
+* Material Dashboard 2 React - v2.0.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-dashboard-react
+* Copyright 2021 Creative Tim (https://www.creative-tim.com)
+
+Coded by www.creative-tim.com
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+*/
+
+import { useState } from "react";
+
+// @mui material components
 import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
 
 // Material Dashboard 2 React components
 import MDBox from "../../components1/MDBox";
 import MDTypography from "../../components1/MDTypography";
+import MDAlert from "../../components1/MDAlert";
+import MDButton from "../../components1/MDButton";
+import MDSnackbar from "../../components1/MDSnackbar";
 
-// Material Dashboard 2 React example components
+// Material Dashboard 2 React example 
 import DashboardLayout from "../../examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "../../examples/Navbars/DashboardNavbar";
 import Footer from "../../examples/Footer";
-import PropTypes from 'prop-types';
-import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
-import Dialog from '@mui/material/Dialog';
-import DialogTitle from '@mui/material/DialogTitle';
-import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import Typography from '@mui/material/Typography';
-import { motion } from "framer-motion";
-import Form from "../../components/Testhome/form/Form"
-import { auth1 } from "../../components/firebase"
-import Posts from "../../components/Testhome/posts/Posts"
-import { Link } from 'react-router-dom';
+import Hero from '../../components/Firstpage/components/Hero/Hero';
+import Page from "../authentication/reset-password/cover"
+function Home() {
+  const [successSB, setSuccessSB] = useState(false);
+  const [infoSB, setInfoSB] = useState(false);
+  const [warningSB, setWarningSB] = useState(false);
+  const [errorSB, setErrorSB] = useState(false);
 
-const flip = {
-  hidden: {
-    transform: "scale(0) rotateX(-360deg)",
-    opacity: 0,
-    transition: {
-      delay: 0.3,
-    },
-  },
-  visible: {
-    transform: " scale(1) rotateX(0deg)",
-    opacity: 1,
-    transition: {
-      duration: 0.5,
-    },
-  },
-  exit: {
-    transform: "scale(0) rotateX(360deg)",
-    opacity: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
-};
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-  '& .MuiDialogContent-root': {
-    padding: theme.spacing(2),
-  },
-  '& .MuiDialogActions-root': {
-    padding: theme.spacing(1),
-  },
-}));
+  const openSuccessSB = () => setSuccessSB(true);
+  const closeSuccessSB = () => setSuccessSB(false);
+  const openInfoSB = () => setInfoSB(true);
+  const closeInfoSB = () => setInfoSB(false);
+  const openWarningSB = () => setWarningSB(true);
+  const closeWarningSB = () => setWarningSB(false);
+  const openErrorSB = () => setErrorSB(true);
+  const closeErrorSB = () => setErrorSB(false);
 
+  const alertContent = (name) => (
+    <MDTypography variant="body2" color="white">
+      A simple {name} alert with{" "}
+      <MDTypography component="a" href="#" variant="body2" fontWeight="medium" color="white">
+        an example link
+      </MDTypography>
+      . Give it a click if you like.
+    </MDTypography>
+  );
 
+  const renderSuccessSB = (
+    <MDSnackbar
+      color="success"
+      icon="check"
+      title="Material Dashboard"
+      content="Hello, world! This is a notification message"
+      dateTime="11 mins ago"
+      open={successSB}
+      onClose={closeSuccessSB}
+      close={closeSuccessSB}
+      bgWhite
+    />
+  );
 
-const BootstrapDialogTitle = (props) => {
-  const { children, onClose, ...other } = props;
+  const renderInfoSB = (
+    <MDSnackbar
+      icon="notifications"
+      title="Material Dashboard"
+      content="Hello, world! This is a notification message"
+      dateTime="11 mins ago"
+      open={infoSB}
+      onClose={closeInfoSB}
+      close={closeInfoSB}
+    />
+  );
+
+  const renderWarningSB = (
+    <MDSnackbar
+      color="warning"
+      icon="star"
+      title="Material Dashboard"
+      content="Hello, world! This is a notification message"
+      dateTime="11 mins ago"
+      open={warningSB}
+      onClose={closeWarningSB}
+      close={closeWarningSB}
+      bgWhite
+    />
+  );
+
+  const renderErrorSB = (
+    <MDSnackbar
+      color="error"
+      icon="warning"
+      title="Material Dashboard"
+      content="Hello, world! This is a notification message"
+      dateTime="11 mins ago"
+      open={errorSB}
+      onClose={closeErrorSB}
+      close={closeErrorSB}
+      bgWhite
+    />
+  );
 
   return (
-    <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
-      {children}
-      {onClose ? (
-        <IconButton
-          aria-label="close"
-          onClick={onClose}
-          sx={{
-            position: 'absolute',
-            right: 8,
-            top: 8,
-            color: (theme) => theme.palette.grey[500],
-          }}
-        >
-          <CloseIcon />
-        </IconButton>
-      ) : null}
-    </DialogTitle>
+    <DashboardLayout>
+    <DashboardNavbar />
+    <MDBox py={3}>
+    <Hero/>
+    </MDBox>
+    <Footer />
+  </DashboardLayout>
   );
-};
-
-BootstrapDialogTitle.propTypes = {
-  children: PropTypes.node,
-  onClose: PropTypes.func.isRequired,
-};
-
-function Home() {
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  return <div>
-  <DashboardLayout>
-  <DashboardNavbar />
-  <MDBox
-        color="text"
-        fontSize={25}
-
-      >
-
-        <span style={{fontWeight: 'bold'}}>Home</span>
-      </MDBox>
-  <Footer />
-</DashboardLayout>
-  </div>;
-
 }
 
 export default Home;

@@ -286,6 +286,9 @@ const likeHandle = (event) => {
           <div className={classes.header__info}>
           <MDTypography style={{fontSize:22,fontWeight:"800"}}>
           {profileUserData?.firstName} {profileUserData?.lastName}
+          <div style={{marginTop:-15}}>
+          <span style={{fontSize:18,fontWeight:"bold"}}>@{profileUserData?.username}</span>
+          </div>
           </MDTypography>
             <p style={{marginLeft:-3}}>
 

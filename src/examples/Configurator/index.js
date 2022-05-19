@@ -166,12 +166,7 @@ function Configurator() {
         pb={0.5}
         px={3}
       >
-        <MDBox>
-          <MDTypography variant="h5">{profileUserData?.firstName} {profileUserData?.lastName}</MDTypography>
-          <MDTypography variant="body2" color="text">
-          @{profileUserData?.username}
-          </MDTypography>
-        </MDBox>
+
 
         <Icon
           sx={({ typography: { size }, palette: { dark, white } }) => ({
@@ -192,7 +187,7 @@ function Configurator() {
 
       <MDBox pt={0.5} pb={3} px={3}>
         <MDBox>
-          <MDTypography variant="h6">Sidenav Colors</MDTypography>
+          <MDTypography variant="h6">Highlighed Color</MDTypography>
 
           <MDBox mb={0.5}>
             {sidenavColors.map((color) => (
@@ -238,10 +233,6 @@ function Configurator() {
         </MDBox>
 
         <MDBox mt={3} lineHeight={1}>
-          <MDTypography variant="h6">Sidenav Type</MDTypography>
-          <MDTypography variant="button" color="text">
-            Choose between different sidenav types.
-          </MDTypography>
 
           <MDBox
             sx={{
@@ -320,7 +311,6 @@ function Configurator() {
         <Divider />
 
         <MDBox
-        mt={8}
         display="flex"
         justifyContent="center"
         alignItems="center"
@@ -331,17 +321,17 @@ function Configurator() {
       >
         &copy; {new Date().getFullYear()}, made with
         <MDBox fontSize={size.md} color="text" mb={-0.5} mx={0.25}>
-          <Icon color="inherit" fontSize="inherit">
+          <Icon style={{color: "red"}} fontSize="inherit">
             favorite
           </Icon>
         </MDBox>
         by
-        <Link  target="_blank">
+        <Link href="https://laughing-darwin-c668f3.netlify.app/" target="_blank">
           <MDTypography variant="button" fontWeight="medium">
-            &nbsp;Aces Team&nbsp;
+            &nbsp;Jessy Bandya&nbsp;
           </MDTypography>
         </Link>
-        for a better web.
+        for a better future.
       </MDBox>
 
       </MDBox>

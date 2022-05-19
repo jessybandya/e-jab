@@ -43,6 +43,7 @@ function Footer({ company, links }) {
     ));
 
   return (
+    <center>
     <MDBox
       width="100%"
       display="flex"
@@ -67,12 +68,12 @@ function Footer({ company, links }) {
           </Icon>
         </MDBox>
         by
-        <Link href={href} target="_blank">
+        <Link href="https://laughing-darwin-c668f3.netlify.app/" target="_blank">
           <MDTypography variant="button" fontWeight="medium">
             &nbsp;Jessy Bandya&nbsp;
           </MDTypography>
         </Link>
-        for a better web.
+        for a better future.
       </MDBox>
       <MDBox
         component="ul"
@@ -94,6 +95,8 @@ function Footer({ company, links }) {
         {renderLinks()}
       </MDBox>
     </MDBox>
+    </center>
+
   );
 }
 
@@ -101,10 +104,10 @@ function Footer({ company, links }) {
 Footer.defaultProps = {
   company: { href: "", name: "Creative Tim" },
   links: [
-    { href: "", name: "UoN_ACES" },
-    { href: "", name: "MOTIVATE" },
-    { href: "", name: "INSPIRE" },
-    { href: "", name: "INNOVATE" },
+    { href: "", name: "" },
+    { href: "", name: "" },
+    { href: "", name: "" },
+    { href: "", name: "" },
   ],
 };
 
