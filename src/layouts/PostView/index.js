@@ -101,7 +101,7 @@ import DashboardLayout from "../../examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "../../examples/Navbars/DashboardNavbar";
 import MDInput from "../../components1/MDInput";
 import Picker from 'emoji-picker-react';
-
+import Comments from "./Comments"
 
 function PostView() {
   const { id, uid } = useParams();
@@ -110,10 +110,17 @@ function PostView() {
   const [chosenEmoji, setChosenEmoji] = useState(null);
   const [addComment, setAddComment] = useState("")
 
+
+
+
+
   const onEmojiClick = (event, emojiObject) => {
     setChosenEmoji(emojiObject);
     setAddComment(emojiObject)
   };
+
+  const [isReadMore, setIsReadMore] = useState(true);
+  const toggleReadMore = () => {setIsReadMore(!isReadMore)}; 
 
   // const history = useHistory("")
   const handleExpandClick = () => {
@@ -143,6 +150,36 @@ function PostView() {
       setPost(doc.data());
     });
 }, [])
+
+function abbrNum(number, decPlaces) {
+  // 2 decimal places => 100, 3 => 1000, etc
+  decPlaces = Math.pow(10,decPlaces);
+
+  // Enumerate number abbreviations
+  var abbrev = [ "K", "M", "B", "T" ];
+
+  // Go through the array backwards, so we do the largest first
+  for (var i=abbrev.length-1; i>=0; i--) {
+
+      // Convert array index to "1000", "1000000", etc
+      var size = Math.pow(10,(i+1)*3);
+
+      // If the number is bigger or equal do the abbreviation
+      if(size <= number) {
+           // Here, we multiply by decPlaces, round, and then divide by decPlaces.
+           // This gives us nice rounding to a particular decimal place.
+           number = Math.round(number*decPlaces/size)/decPlaces;
+
+           // Add the letter for the abbreviation
+           number += abbrev[i];
+
+           // We are done... stop
+           break;
+      }
+  }
+
+  return number;
+}
 
 
 
@@ -316,22 +353,18 @@ setAddComment("")
           {/* <img src={Love} style={{ order: `${loveIconOrder} ` }} alt="love-icon" />
           <img src={Care} style={{ order: `${careIconOrder} ` }} alt="care-icon" /> */}
         </div>
-        <h4 style={{marginTop:10}}><MDTypography style={{fontSize:16}}>{post?.noLikes} {post?.noLikes == 1 ? "Like" : "Likes"}</MDTypography></h4>
+        <h4 style={{marginTop:10}}><MDTypography style={{fontSize:16}}>{abbrNum(post?.noLikes,1)} {post?.noLikes == 1 ? "Like" : "Likes"}</MDTypography></h4>
         <section>
-          <h4><MDTypography style={{fontSize:16}}>{commentsCount} Comment(s)</MDTypography></h4>
-          <h4><MDTypography style={{fontSize:16}}>{shareCount} Shares</MDTypography></h4>
+          <h4><MDTypography style={{fontSize:16}}>{abbrNum(commentsCount,1)} Comment(s)</MDTypography></h4>
+          <h4><MDTypography style={{fontSize:16}}>{abbrNum(shareCount,1)} Shares</MDTypography></h4>
         </section>
       </div>
     );
   };
 
-  var str="";
-  var cleanStr=str.trim();
-  const text = str;
-  const [isReadMore, setIsReadMore] = useState(true);
-  const toggleReadMore = () => {
-    setIsReadMore(!isReadMore);
-  };
+
+  // const text = post?.description;
+
 
   useEffect(() => {
     db.collection('posts').doc(id).onSnapshot((doc) => {
@@ -372,6 +405,12 @@ var s = new Date(post?.timestamp).toLocaleTimeString("en-US")
      <hr/>
       <MDTypography style={{fontSize: 16}}  paragraph>
        {post?.description}
+        {/* {isReadMore ? post?.description.slice(0, 150): post?.description }
+   {post?.description.length > 150 &&
+     <span onClick={toggleReadMore}>
+       {isReadMore ? '...read more' : ' ...show less'}
+    </span>
+  } */}
       </MDTypography>
       {post?.fileData && (
         <div className={classes.body__image}>
@@ -531,6 +570,7 @@ var s = new Date(post?.timestamp).toLocaleTimeString("en-US")
 </MDBox>
 )}
 
+<Comments postId={id}/>
 
 
     </DashboardLayout>
