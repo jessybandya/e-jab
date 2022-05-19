@@ -185,6 +185,18 @@ function DashboardNavbar({ absolute, light, isMini }) {
                   </Link>
 
                </div>
+               
+               <div>
+              <IconButton
+              size="small"
+              disableRipple
+              color="inherit"
+              sx={navbarIconButton}
+              onClick={handleConfiguratorOpen}
+            >
+              <Icon sx={iconsStyle}>settings</Icon>
+            </IconButton>
+            </div>
                 <div>
                 {renderMenu()}
                 <IconButton
@@ -198,6 +210,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
                 </Icon>
               </IconButton>
                 </div>
+                
              </div>
               ):(
                 <>
