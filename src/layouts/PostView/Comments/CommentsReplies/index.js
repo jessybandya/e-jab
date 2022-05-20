@@ -12,7 +12,7 @@ function CommentReplies({postId, commentId}) {
         .collection("comments")
         .doc(commentId)
         .collection("replies")
-        .orderBy("timestamp", "desc")
+        .orderBy("timestamp", "asc")
         .onSnapshot((snap) => setReplies(snap.docs.map((doc) => ({ id: doc.id, data: doc.data() }))));
       return unsubscribe;
     }, []);
