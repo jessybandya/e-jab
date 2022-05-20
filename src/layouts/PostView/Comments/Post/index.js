@@ -24,6 +24,7 @@ import ScrollableFeed from 'react-scrollable-feed'
 import MDInput from "../../../../components1/MDInput";
 import swal from "@sweetalert/with-react";
 import SendIcon from '@mui/icons-material/Send';
+import CommentReplies from "../CommentsReplies";
 
 
 const ExpandMore = styled((props) => {
@@ -72,6 +73,8 @@ function Post({ fromId, commentId, postId, timestamp, comment}) {
   const [profileUserData, setProfileUserData] = useState();
   const [addComment, setAddComment] = useState("")
   const [profileUserData1, setProfileUserData1] = useState();
+  const [commentReply, setComentReply] = useState(0);
+
 
   useEffect(() => {
     db.collection('users').doc(`${fromId}`).onSnapshot((doc) => {
@@ -91,7 +94,7 @@ const commentPost = (event) => {
   if(!addComment){
     swal("🔴 You cannot add an empty comment!")
   }else{
-    db.collection("posts").doc(`${postId}`).collection("comments").add({
+    db.collection("posts").doc(`${postId}`).collection("comments").doc(`${commentId}`).collection("replies").add({
       ownerId: fromId,
       read: false,
       count:false,
@@ -106,7 +109,7 @@ const commentPost = (event) => {
     count:false,
     postId,
     comment: addComment,
-    type:"comment",
+    type:"replies",
     fromId:auth1?.currentUser?.uid,
     timestamp: Date.now(),
 }).then(() => setAddComment(""));
@@ -121,6 +124,13 @@ useEffect(() => {
       setProfileUserData1(doc.data());
   });
 }, [])
+
+useEffect(() => {
+  db.collection('posts').doc(`${postId}`).collection("comments").doc(`${commentId}`).collection("replies").where("count", "==",false)
+  .onSnapshot(snapshot => (
+  setComentReply(snapshot.docs.length)
+  ))
+  }, []);
     return (
         <MDBox className="post1">
                       {/* <Typography paragraph>
@@ -194,7 +204,7 @@ useEffect(() => {
           aria-label="show more"
         >
           <MDTypography>
-          <span style={{fontSize:15}}>Replies({abbrNum(123456,0)})</span>
+          <span style={{fontSize:15}}>Replies({abbrNum(commentReply,0)})</span>
           <ExpandMoreIcon />
             </MDTypography>                  
         </ExpandMore>
@@ -207,7 +217,7 @@ useEffect(() => {
           <ScrollableFeed>
 
           <MDTypography paragraph>
-            All Replies will be here
+            <CommentReplies postId={postId} commentId={commentId}/>
           </MDTypography>
 
           </ScrollableFeed>
@@ -233,7 +243,7 @@ useEffect(() => {
    <Avatar style={{padding:2}} src={profileUserData1?.photoURL} alt={profileUserData1?.firstName}/>
 
    ):(
-    <SendIcon onClick={()=> alert("Post Comments function be added soon.")} style={{cursor: "pointer"}} fontSize="100px"/>
+    <SendIcon onClick={commentPost} style={{cursor: "pointer"}} fontSize="100px"/>
    )}
 </MDBox>
 )}
