@@ -111,7 +111,7 @@ function abbrNum(number, decPlaces) {
 }
 
 
-function Posts({ fromId, commentId, postId, timestamp, comment, descriptions, name, year}) {
+function Posts({ fromId, commentId, postId, timestamp, comment, descriptions, name, year, unit}) {
   const [profileUserData, setProfileUserData] = useState();
   const [addComment, setAddComment] = useState("")
   const [profileUserData1, setProfileUserData1] = useState();
@@ -217,7 +217,8 @@ useEffect(() => {
           </div>
           </Typography> */}
 
-<Card sx={{ width: '100%',marginTop:1 }}>
+          {unit === name &&(
+            <Card sx={{ width: '100%',marginTop:1 }}>
   <MDTypography>
   <CardHeader
         avatar={
@@ -363,6 +364,9 @@ useEffect(() => {
           </MDTypography>
       </Collapse>
     </Card>
+          )}
+
+
 
         </MDBox>
     )
