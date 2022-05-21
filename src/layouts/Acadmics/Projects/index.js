@@ -22,7 +22,7 @@ import DashboardLayout from "../../../examples/LayoutContainers/DashboardLayout"
 import DashboardNavbar from "../../../examples/Navbars/DashboardNavbar";
 import Footer from "../../../examples/Footer";
 
-function Notes() {
+function Projects() {
   const [controller, dispatch] = useMaterialUIController();
   const { miniSidenav, transparentSidenav, whiteSidenav, darkMode, sidenavColor } = controller;
 
@@ -38,7 +38,7 @@ function Notes() {
     variant="gradient"
     color={sidenavColor}
     fullWidth
-    ><p>Academic Past Papers </p></MDButton>
+    ><p>Projects</p></MDButton>
     
   <div style={{display: "flex",flexWrap: "wrap",alignItems:"center",justifyContent: "center"}}>
     <MDButton
@@ -76,4 +76,4 @@ function Notes() {
   );
 }
 
-export default Notes;
+export default Projects;

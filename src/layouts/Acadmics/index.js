@@ -11,7 +11,7 @@ import DashboardLayout from "../../examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "../../examples/Navbars/DashboardNavbar";
 import Footer from "../../examples/Footer";
 import Notes from "./Notes"
-import Pastpapers from "./Pastpapers"
+import Projects from "./Projects"
 
 import {
   useMaterialUIController,
@@ -22,7 +22,7 @@ import {
 
 function Acadmics() {
   const [notes, setNotes] = useState(false)
-  const [pastpapers, setPastpapers] = useState(false)
+  const [Projects, setProjects] = useState(false)
    const [controller, dispatch] = useMaterialUIController();
    const { miniSidenav, transparentSidenav, whiteSidenav, darkMode, sidenavColor } = controller;
 
@@ -31,11 +31,11 @@ function Acadmics() {
 
 const showNotes = () =>{
   setNotes(true)
-  setPastpapers(false)
+  setProjects(false)
 }
 const showPastpaers = () =>{
   setNotes(false)
-  setPastpapers(true)
+  setProjects(true)
 }
   return <div>
   <DashboardLayout>
@@ -48,20 +48,20 @@ rel="noreferrer"
 variant="gradient"
 color={sidenavColor}
 onClick={showNotes}
->Academic Notes</MDButton>
+>Past Papers</MDButton>
 <MDButton
 rel="noreferrer"
 variant="gradient"
 color={sidenavColor}
 style={{marginLeft:10}}
 onClick={showPastpaers}    
->Past Papers</MDButton>
+>Projects</MDButton>
 </div>
 
 {notes ?(
   <Notes />
-): pastpapers ?(
-  <Pastpapers/>
+): Projects ?(
+  <Projects/>
 ):(
 <></>
 )}

@@ -52,8 +52,47 @@ import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
 import AddNotes from './Sem1/Addnotes';
 import AvailableRef from './Sem1/References/AvailbleRef';
+import PropTypes from 'prop-types';
+import SwipeableViews from 'react-swipeable-views';
+import { useTheme } from '@mui/material/styles';
+import AppBar from '@mui/material/AppBar';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Exams from './Sem1/Exams';
 
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`full-width-tabpanel-${index}`}
+      aria-labelledby={`full-width-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `full-width-tab-${index}`,
+    'aria-controls': `full-width-tabpanel-${index}`,
+  };
+}
 
 const Input = styled('input')({
   display: 'none',
@@ -119,7 +158,16 @@ function Year1() {
    const [value, setValue] = useState('');
    const [ref,setRef] = useState(false)
    const [addRef,setAddRef] = useState(false)
-
+   const theme = useTheme();
+   const [value1, setValue1] = React.useState(0);
+ 
+   const handleChange0 = (event, newValue) => {
+     setValue1(newValue);
+   };
+ 
+   const handleChangeIndex = (index) => {
+     setValue(index);
+   };
 
    const showRef = () =>{
      setRef(true)
@@ -273,8 +321,9 @@ function Year1() {
   scroll={scroll2}
   aria-labelledby="scroll-dialog-title"
   aria-describedby="scroll-dialog-description"
-  style={{width: "100%"}}
+  style={{width: "100%",height: "100%"}}
   fullWidth
+  fullHeight
 >
 
 <MDBox><DialogTitle   style={{backgroundColor: "#1a2035",border: "1px solid #1a2035"}}
@@ -282,19 +331,21 @@ function Year1() {
   <div style={{display: "flex",justifyContent: "space-between"}}>
   <div>{auth1?.currentUser?.uid &&(
     <AddIcon onClick={showAddSem1} fontSize='medium' style={{cursor: "pointer",color: "#fff"}}/>
-  )}</div> <div><MDBox style={{color: "#fff"}}>Year 1  Sem I</MDBox></div> <div> <CancelIcon fontSize='medium' onClick={handleClose} style={{cursor: "pointer",color: "#fff"}}/></div>
+  )}</div> <div>
+    <MDBox style={{color: "#fff"}}>Year 1  Sem I</MDBox></div> <div> <CancelIcon fontSize='medium' onClick={handleClose} style={{cursor: "pointer",color: "#fff"}}/></div>
   </div>
   </DialogTitle></MDBox>
 
-  <DialogContent style={{backgroundColor: "#1a2035"}} dividers={scroll2 === 'paper'}>
+  <DialogContent style={{backgroundColor: "#1a2035",height:'100%'}} dividers={scroll2 === 'paper'}>
   <motion.div
   onClick={(e) => e.stopPropagation()}  // Prevent click from closing modal
   variants={flip}
   initial="hidden"
   animate="visible"
   exit="exit"
+  style={{height:'100%'}}
   >
-  {addSem1 ?(
+  {/* {addSem1 ?(
     <div>
       <div style={{display: "flex",justifyContent: "space-between"}}>
         <div></div> <div><h4>Add Note(s)</h4></div> <div><CancelIcon fontSize='medium' onClick={showSem1Notes} style={{cursor: "pointer"}}/></div>
@@ -370,7 +421,39 @@ function Year1() {
     </div>
   ):(
     <Sem1  sem1={sem1}/>
-  )}
+  )} */}
+
+<Box sx={{ width: '100%' }}>
+      <AppBar position="static">
+        <Tabs
+          value={value1}
+          onChange={handleChange0}
+          indicatorColor="secondary"
+          textColor="inherit"
+          variant="fullWidth"
+          aria-label="full width tabs example"
+        >
+          <Tab label="EXAMS" {...a11yProps(0)} />
+          <Tab label="CATS" {...a11yProps(1)} />
+          <Tab label="ASSIGNMENTS" {...a11yProps(2)} />
+        </Tabs>
+      </AppBar>
+      <SwipeableViews
+        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
+        index={value1}
+        onChangeIndex={handleChangeIndex}
+      >
+        <TabPanel value={value1} index={0} dir={theme.direction}>
+          <Exams unit={sem1}/>
+        </TabPanel>
+        <TabPanel value={value1} index={1} dir={theme.direction}>
+          Cats
+        </TabPanel>
+        <TabPanel value={value1} index={2} dir={theme.direction}>
+          Assignments
+        </TabPanel>
+      </SwipeableViews>
+    </Box>
     
     </motion.div>
   </DialogContent>
