@@ -185,7 +185,7 @@ useEffect(() => {
   ))
   }, []);
     return (
-        <MDBox className="post1">
+        <MDBox>
                       {/* <Typography paragraph>
           
           <div style={{display: "flex",marginBottom:0,justifyContent:"space-between",padding:5,border: "2px solid #C5C5C5",borderRadius:5,backgroundColor:"white"}} className="post1" >
