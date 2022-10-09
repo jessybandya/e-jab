@@ -30,7 +30,6 @@ import MDSnackbar from "../../components1/MDSnackbar";
 import DashboardLayout from "../../examples/LayoutContainers/DashboardLayout";
 import DashboardNavbar from "../../examples/Navbars/DashboardNavbar";
 import Footer from "../../examples/Footer";
-import Hero from '../../components/Firstpage/components/Hero/Hero';
 import Page from "../authentication/reset-password/cover"
 function Business() {
   const [successSB, setSuccessSB] = useState(false);

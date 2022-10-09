@@ -40,15 +40,14 @@ import { auth1 } from "./components/firebase"
 import Fade from "react-reveal/Fade";
 import Flip from "react-reveal/Flip";
 import Chatbot from "react-chatbot-kit";
-import config from "./chatBot/ChatBotConfig";
-import MessageParser from "./chatBot/MessageParser";
-import ActionProvider from "./chatBot/ActionProvider";
+
 // Images
 import brandWhite from "./assets/images/logo-ct.png";
 import brandDark from "./assets/images/logo-ct-dark.png";
 import SignIn from "./layouts/authentication/sign-in";
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Test from "./components/Test/index.js";
 
 export default function App() {
   const [showBot, toggleBot] = useState(false);
@@ -167,13 +166,14 @@ export default function App() {
               <Sidenav
                 color={sidenavColor}
                 brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
-                brandName="UoN ACES"
+                brandName="E-JAB"
                 routes={routes}
                 onMouseEnter={handleOnMouseEnter}
                 onMouseLeave={handleOnMouseLeave}
               />
               <Configurator />
               {/* {configsButton} */}
+              
             </>
           )}
           {layout === "vr" && <Configurator />}
@@ -192,7 +192,7 @@ export default function App() {
               <Sidenav
                 color={sidenavColor}
                 brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
-                brandName="UoN ACES"
+                brandName="E-JAB"
                 routes={routes1}
                 onMouseEnter={handleOnMouseEnter}
                 onMouseLeave={handleOnMouseLeave}
@@ -206,6 +206,7 @@ export default function App() {
             {getRoutes(routes1)}
             <Route exact path="/authentication/sign-in" element={<SignIn />} />
             <Route exact path="/postview/:id/:uid" element={<PostView />} />
+            <Route exact path="/test" element={<Test />} />
             <Route path="*" element={<Navigate to="/home" />} />            
             </Routes>
           </>
@@ -223,7 +224,7 @@ export default function App() {
             <Sidenav
               color={sidenavColor}
               brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
-              brandName="UoN ACES"
+              brandName="E-JAB"
               routes={routes}
               onMouseEnter={handleOnMouseEnter}
               onMouseLeave={handleOnMouseLeave}
@@ -240,7 +241,7 @@ export default function App() {
           {getRoutes(routes)}
           <Route exact path="/authentication/sign-in" element={<SignIn />} />
           <Route exact path="/postview/:id/:uid" element={<PostView />} />
-
+          <Route exact path="/test" element={<Test />} />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
         </>
@@ -251,7 +252,7 @@ export default function App() {
             <Sidenav
               color={sidenavColor}
               brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
-              brandName="UoN ACES"
+              brandName="E-JAB"
               routes={routes1}
               onMouseEnter={handleOnMouseEnter}
               onMouseLeave={handleOnMouseLeave}
@@ -265,7 +266,7 @@ export default function App() {
           {getRoutes(routes1)}
           <Route exact path="/authentication/sign-in" element={<SignIn />} />
           <Route exact path="/postview/:id/:uid" element={<PostView />} />
-
+          <Route exact path="/test" element={<Test />} />
           <Route path="*" element={<Navigate to="/home" />} />
           
           </Routes>

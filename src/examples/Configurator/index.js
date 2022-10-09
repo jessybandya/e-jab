@@ -157,7 +157,7 @@ function Configurator() {
 
 
   return (
-    <ConfiguratorRoot variant="permanent" ownerState={{ openConfigurator }}>
+    <ConfiguratorRoot style={{zIndex:1501}} variant="permanent" ownerState={{ openConfigurator }}>
       <MDBox
         display="flex"
         justifyContent="space-between"
@@ -321,7 +321,7 @@ function Configurator() {
       >
         &copy; {new Date().getFullYear()}, made with
         <MDBox fontSize={size.md} color="text" mb={-0.5} mx={0.25}>
-          <Icon style={{color: "red"}} fontSize="inherit">
+          <Icon style={{color: "#3498db"}} fontSize="inherit">
             favorite
           </Icon>
         </MDBox>

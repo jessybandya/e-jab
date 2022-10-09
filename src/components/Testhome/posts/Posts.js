@@ -10,27 +10,30 @@ const Posts = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const unsubscribe = db
-      .collection("posts")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((snap) => setPosts(snap.docs.map((doc) => ({ id: doc.id, data: doc.data() }))));
-    return unsubscribe;
-  }, []);
+    db.collection('posts').orderBy("timestamp", "desc").onSnapshot(snapshot => {
+      setPosts(snapshot.docs.map(doc => ({
+            id: doc.id,
+            post: doc.data(),
+        })));
+    })
+}, []);
+
+
 
   return (
     <div className={classes.posts}>
       <FlipMove style={{ width: "100%" }}>
-        {Array.from(posts).map((post) => (
+        {Array.from(posts).map(({id, post}) => (
           <Post
-            key={post.id}
-            ownerId={post.data.ownerId}
-            postId={post.id}
-            title={post.data.title}
-            timestamp={post.data.timestamp}
-            description={post.data.description}
-            fileType={post.data.fileType}
-            fileData={post.data.fileData}
-            noLikes={post.data.noLikes}
+            key={id}
+            ownerId={post.ownerId}
+            postId={id}
+            title={post.title}
+            timestamp={post.timestamp}
+            description={post.description}
+            fileType={post.fileType}
+            fileData={post.fileData}
+            noLikes={post.noLikes}
           />
         ))}
       </FlipMove>
