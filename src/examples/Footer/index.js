@@ -47,7 +47,7 @@ function Footer({ company, links }) {
     <MDBox
       width="100%"
       display="flex"
-      flexDirection={{ xs: "column", lg: "row" }}
+      flexDirection={{ xs: "column", lg: "column" }}
       justifyContent="space-between"
       alignItems="center"
       px={1.5}
@@ -63,7 +63,7 @@ function Footer({ company, links }) {
       >
         &copy; {new Date().getFullYear()}, made with
         <MDBox fontSize={size.md} color="text" mb={-0.5} mx={0.25}>
-          <Icon style={{color: "red"}} fontSize="inherit">
+          <Icon style={{color: "#3498db"}} fontSize="inherit">
             favorite
           </Icon>
         </MDBox>
@@ -95,6 +95,23 @@ function Footer({ company, links }) {
         {renderLinks()}
       </MDBox>
     </MDBox>
+        {/* Scroll To Top Start */}
+
+      {/* Scroll To Top End*/}
+        {/* Bubbles Animation Start */}
+        <div className="bubbles_wrap">
+        <div className="bubble x1" />
+        <div className="bubble x2" />
+        <div className="bubble x3" />
+        <div className="bubble x4" />
+        <div className="bubble x5" />
+        <div className="bubble x6" />
+        <div className="bubble x7" />
+        <div className="bubble x8" />
+        <div className="bubble x9" />
+        <div className="bubble x10" />
+      </div>
+      {/* Bubbles Animation End*/}
     </center>
 
   );
