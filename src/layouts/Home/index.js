@@ -119,12 +119,14 @@ function Home() {
         <div className="row align-items-center">
           <div className="col-lg-6">
             <div className="banner-content">
-              <h2 className="h2-subtitle wow fadeInUp animated" data-wow-delay=".4s">Welcome To Online Coaching</h2>
-              <h1 className="h1-title wow fadeInUp animated" data-wow-delay=".5s">Get Class From Top <span>Instructor <img src="assets2/images/banner-line.png" alt="line" /></span></h1>
-              <p className="wow fadeInUp animated" data-wow-delay=".6s">Integer in magna in est ultrices bibendum eget enim et dui imperdiet faucibus. Fusce eu tristique felis.</p>
+              <h2 className="h2-subtitle wow fadeInUp animated" data-wow-delay=".4s">Welcome To Education-JAB (E-JAB)</h2>
+              <MDTypography variant="h6" fontWeight="medium" className="h1-title wow fadeInUp animated" data-wow-delay=".5s">
+              <span style={{fontSize:28}}><i>Get Every Materials From The Top E-Web</i></span>
+            </MDTypography>
+
               <div className="banner-btn wow fadeInUp animated" data-wow-delay=".7s">
-                <a href="about-us.html" className="sec-btn">Explore Courses</a>
-                <a href="contact-us.html" className="sec-btn btn-2">Contact Us</a>
+                <a href="#" className="sec-btn">About Us</a>
+                <a href="#" className="sec-btn btn-2">Contact Us</a>
               </div>
             </div>
           </div>
@@ -135,8 +137,8 @@ function Home() {
                   <img src="assets2/images/banner-aliment-icon-1.png" alt="icon" />
                 </div>
                 <div className="aliment-content">
-                  <h3 className="h3-title">Congratulations</h3>
-                  <p>Your admission completed</p>
+                  <h3 className="h3-title">Past Papers</h3>
+                  <p>With Solutions within!!!</p>
                 </div>
               </div>
               <div className="aliment-2">
@@ -144,17 +146,8 @@ function Home() {
                   <img src="assets2/images/banner-aliment-icon-2.png" alt="icon" />
                 </div>
                 <div className="aliment-content">
-                  <h3 className="h3-title">User Experience Class</h3>
-                  <p>Tomorrow is our</p>
-                </div>
-              </div>
-              <div className="aliment-3">
-                <div className="aliment-icon-green">
-                  <img src="assets2/images/banner-aliment-icon-3.png" alt="icon" />
-                </div>
-                <div className="aliment-content">
-                  <h3 className="h3-title">578k</h3>
-                  <p>Assisted Student</p>
+                  <h3 className="h3-title">Final Year Projects</h3>
+                  <p>With Solutions within!!!</p>
                 </div>
               </div>
               <div className="aliment-4">
@@ -175,11 +168,11 @@ function Home() {
         <div className="row">
           <div className="col-lg-12">
             <div className="course-category-title">
-              <h2 className="h2-subtitle">Course Category</h2>
-              <h2 className="h2-title">Explore Popular Courses</h2>
+              <h2 className="h2-subtitle">Engineering Categories</h2>
             </div>
           </div>
         </div>
+        <br />
         <div className="row">
           <div className="col-xl-4 col-lg-6 col-md-6">
             <div className="course-category-box">
@@ -188,8 +181,7 @@ function Home() {
                 <img className="dis-no" src="assets2/images/course-category-icon-1-w.png" alt="icon" />
               </div>
               <div className="course-category-content">
-                <a href="courses.html"><h3 className="h3-title">Learn Data Science</h3></a>
-                <p>Data is Everything</p>
+                <a href="#"><h3 className="h3-title">Civil & Construction</h3></a>
               </div>
             </div>
           </div>
@@ -200,8 +192,7 @@ function Home() {
                 <img className="dis-no" src="assets2/images/course-category-icon-2-w.png" alt="icon" />
               </div>
               <div className="course-category-content">
-                <a href="courses.html"><h3 className="h3-title">Business Strategy</h3></a>
-                <p>Improve your business</p>
+                <a href="#"><h3 className="h3-title">Electrical & Information</h3></a>
               </div>
             </div>
           </div>
@@ -212,8 +203,7 @@ function Home() {
                 <img className="dis-no" src="assets2/images/course-category-icon-3-w.png" alt="icon" />
               </div>
               <div className="course-category-content">
-                <a href="courses.html"><h3 className="h3-title">Learn Art &amp; Design</h3></a>
-                <p>Fun &amp; Challenging</p>
+                <a href="#"><h3 className="h3-title">Geospatial & Space Technology</h3></a>
               </div>
             </div>
           </div>
@@ -224,8 +214,7 @@ function Home() {
                 <img className="dis-no" src="assets2/images/course-category-icon-4-w.png" alt="icon" />
               </div>
               <div className="course-category-content">
-                <a href="courses.html"><h3 className="h3-title">Learn Lifestyle</h3></a>
-                <p>New Skills, New You</p>
+                <a href="#"><h3 className="h3-title">Mechanical & Manufacturing</h3></a>
               </div>
             </div>
           </div>
@@ -236,20 +225,7 @@ function Home() {
                 <img className="dis-no" src="assets2/images/course-category-icon-5-w.png" alt="icon" />
               </div>
               <div className="course-category-content">
-                <a href="courses.html"><h3 className="h3-title">Learn Marketing</h3></a>
-                <p>Improve your business</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-xl-4 col-lg-6 col-md-6">
-            <div className="course-category-box">
-              <div className="course-category-icon">
-                <img className="dis-yes" src="assets2/images/course-category-icon-6.png" alt="icon" />
-                <img className="dis-no" src="assets2/images/course-category-icon-6-w.png" alt="icon" />
-              </div>
-              <div className="course-category-content">
-                <a href="courses.html"><h3 className="h3-title">Learn Finance</h3></a>
-                <p>Fun &amp; Challenging</p>
+                <a href="#"><h3 className="h3-title">Environmental & Biosystems</h3></a>
               </div>
             </div>
           </div>
@@ -263,22 +239,22 @@ function Home() {
         <div className="row align-items-center">
           <div className="col-lg-6">
             <div className="about-img-box wow fadeInLeft animated" data-wow-delay=".4s">
-              <div className="aliment-1">
-                <div className="aliment-icon-red">
-                  <img src="assets2/images/banner-aliment-icon-1.png" alt="icon" />
+            <div className="aliment-1">
+            <div className="aliment-icon-red">
+              <img src="assets2/images/banner-aliment-icon-1.png" alt="icon" />
+            </div>
+            <div className="aliment-content">
+              <h3 className="h3-title">Past Papers</h3>
+              <p>With Solutions within!!!</p>
+            </div>
+          </div>
+              <div className="aliment-2">
+                <div className="aliment-icon-purple">
+                  <img src="assets2/images/banner-aliment-icon-2.png" alt="icon" />
                 </div>
                 <div className="aliment-content">
-                  <h3 className="h3-title">Congratulations</h3>
-                  <p>Your admission completed</p>
-                </div>
-              </div>
-              <div className="aliment-3">
-                <div className="aliment-icon-green">
-                  <img src="assets2/images/banner-aliment-icon-3.png" alt="icon" />
-                </div>
-                <div className="aliment-content">
-                  <h3 className="h3-title">578k</h3>
-                  <p>Assisted Student</p>
+                  <h3 className="h3-title">Final Year Projects</h3>
+                  <p>With Solutions within!!!</p>
                 </div>
               </div>
               <div className="about-img">
@@ -290,15 +266,17 @@ function Home() {
             <div className="about-us-content">
               <div className="about-us-title">
                 <h2 className="h2-subtitle">About Us</h2>
-                <h2 className="h2-title">We Have Best Online Education</h2>
+                <h2 className="h2-title">We Have E-Pastpapers and E-Projects</h2>
               </div>
-              <p>Morbi porttitor ligula id varius consectetur. Integer ipsum justo, congue sit amet massa vel, porttitor semper magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+              <p>We provide best online past papers across all engineering departments plus online final year projects with solutions.</p>
               <ul>
-                <li><i className="fa fa-check-circle" aria-hidden="true" /><p>Suspendisse nunc massa, pellentesque eu nibh eget.</p></li>
-                <li><i className="fa fa-check-circle" aria-hidden="true" /><p>Suspendisse nunc massa, pellentesque eu nibh eget.</p></li>
-                <li><i className="fa fa-check-circle" aria-hidden="true" /><p>Suspendisse nunc massa, pellentesque eu nibh eget.</p></li>
+                <li><i className="fa fa-check-circle" aria-hidden="true" /><p>Civil & Construction Engineering.</p></li>
+                <li><i className="fa fa-check-circle" aria-hidden="true" /><p>Electrical & Information Engineering.</p></li>
+                <li><i className="fa fa-check-circle" aria-hidden="true" /><p>Geospatial & Space Technology Engineering.</p></li>
+                <li><i className="fa fa-check-circle" aria-hidden="true" /><p>Mechanical & Manufacturing Engineering.</p></li>
+                <li><i className="fa fa-check-circle" aria-hidden="true" /><p>Environmental & Biosystems Engineering.</p></li>
               </ul>
-              <a href="about-us.html" className="sec-btn">Explore More</a>
+              <a href="#" className="sec-btn">Explore More</a>
             </div>
           </div>
         </div>
@@ -349,7 +327,7 @@ function Home() {
               </div>
               <div className="event-video-play-box">
                 <div className="event-play-btn">
-                  <a href="https://www.youtube.com/watch?v=-lQ1dNicM3k" className="event-play-icon popup-youtube" title="Play Video"><span><i className="fa fa-play" aria-hidden="true" /></span></a>
+                  <a href="#" className="event-play-icon popup-youtube" title="Play Video"><span><i className="fa fa-play" aria-hidden="true" /></span></a>
                 </div>
                 <div className="event-video-content">
                   <h3 className="h3-title">Watch Us !</h3>
@@ -366,70 +344,24 @@ function Home() {
               <div className="event-box">
                 <div className="event-date-day">
                   <div className="event-date">
-                    <p>30</p>
+                    <p>No</p>
                   </div>
                   <div className="event-day">
-                    <p>Dec, 2021</p>
+                    <p>Event</p>
                   </div>
                 </div>
                 <div className="event-text-line" />
                 <div className="event-content-text">
                   <div className="event-time-place">
                     <div className="event-time">
-                      <p>10:30am To 2:30pm</p>
+                      <p>--:-- To --:--</p>
                     </div>
                     <div className="event-text-line" />
                     <div className="event-place">
-                      <p>Poland</p>
+                      <p>Kenya</p>
                     </div>
                   </div>
-                  <a href="event-detaill.html"><h3 className="h3-title">Business creativity workshops</h3></a>
-                </div>
-              </div>
-              <div className="event-box">
-                <div className="event-date-day">
-                  <div className="event-date">
-                    <p>15</p>
-                  </div>
-                  <div className="event-day">
-                    <p>Jan, 2022</p>
-                  </div>
-                </div>
-                <div className="event-text-line" />
-                <div className="event-content-text">
-                  <div className="event-time-place">
-                    <div className="event-time">
-                      <p>10:30am To 2:30pm</p>
-                    </div>
-                    <div className="event-text-line" />
-                    <div className="event-place">
-                      <p>Poland</p>
-                    </div>
-                  </div>
-                  <a href="event-detaill.html"><h3 className="h3-title">Street Performance: Call for Art.</h3></a>
-                </div>
-              </div>
-              <div className="event-box mb-0">
-                <div className="event-date-day">
-                  <div className="event-date">
-                    <p>28</p>
-                  </div>
-                  <div className="event-day">
-                    <p>Fab, 2022</p>
-                  </div>
-                </div>
-                <div className="event-text-line" />
-                <div className="event-content-text">
-                  <div className="event-time-place">
-                    <div className="event-time">
-                      <p>10:30am To 2:30pm</p>
-                    </div>
-                    <div className="event-text-line" />
-                    <div className="event-place">
-                      <p>Poland</p>
-                    </div>
-                  </div>
-                  <a href="event-detaill.html"><h3 className="h3-title">Digital transformation conference</h3></a>
+                  <a href="#"><h3 className="h3-title">Engineering workshops</h3></a>
                 </div>
               </div>
             </div>
@@ -447,7 +379,7 @@ function Home() {
             <div className="core-features-content">
               <div className="core-features-title">
                 <h2 className="h2-subtitle">Core Features</h2>
-                <h2 className="h2-title">See What Our Mission Are</h2>
+                <h2 className="h2-title">See What Our Missions Are</h2>
               </div>
               <div className="core-features-box">
                 <div className="core-feature-icon feature-blue">
@@ -455,7 +387,7 @@ function Home() {
                 </div>
                 <div className="core-feature-text">
                   <h3 className="h3-title">Student Life</h3>
-                  <p>Nulla vestibulum pretium nibh at dignissim. Aliquam vehicula consectetur dignissim dictum.</p>
+                  <p>Providing platform of enteracting with other students.</p>
                 </div>
               </div>
               <div className="core-features-box">
@@ -463,8 +395,8 @@ function Home() {
                   <img src="assets2/images/feature-icon-2.png" alt="icon" />
                 </div>
                 <div className="core-feature-text">
-                  <h3 className="h3-title">Best Online Class</h3>
-                  <p>Nulla vestibulum pretium nibh at dignissim. Aliquam vehicula consectetur dignissim dictum.</p>
+                  <h3 className="h3-title">Available Online Past-papers & E-Projects</h3>
+                  <p>Providing platform where engineering students can access almost all the past papers & projects across all the engineering departments.</p>
                 </div>
               </div>
               <div className="core-features-box mb-0">
@@ -472,8 +404,8 @@ function Home() {
                   <img src="assets2/images/feature-icon-3.png" alt="icon" />
                 </div>
                 <div className="core-feature-text">
-                  <h3 className="h3-title">24x7 Program</h3>
-                  <p>Nulla vestibulum pretium nibh at dignissim. Aliquam vehicula consectetur dignissim dictum.</p>
+                  <h3 className="h3-title">Available Solutions to Online Past-papers & E-Projects</h3>
+                  <p>Providing platform where engineering students can access solutions to almost all the past papers & projects across all the engineering departments.</p>
                 </div>
               </div>
             </div>
@@ -491,23 +423,22 @@ function Home() {
           <div className="col-lg-6">
             <div className="testimonial-title">
               <h2 className="h2-subtitle">Testimonial</h2>
-              <h2 className="h2-title">What Our Client Says About Us</h2>
-              <p>Proin et lacus eu odio tempor porttitor id vel augue. Vivamus volutpat vehicula sem, et imperdiet enim tempor id. Phasellus lobortis efficitur nisl eget vehicula. Donec viverra blandit nunc, nec tempor ligula ullamcorper venenatis.</p>
+              <h2 className="h2-title">What Some Studnts Says About Us</h2>
             </div>
           </div>
           <div className="col-lg-6">
             <div className="testimonial-slider">
               <div className="testimonial-box">
-                <p>"Proin feugiat tortor non neque eleifend, at fermentum est elementum. Ut mollis leo odio vulputate rutrum. Nunc sagittis sit amet ligula ut eleifend. Mauris consequat mauris sit amet turpis commodo fermentum. Quisque consequat tortor ut nisl finibus".</p>
+              <p>"I've obtained all the past papers with ease access, Thank you!"</p>
                 <div className="testimonial-client">
                   <div className="testimonial-client-img-box">
                     <div className="testimonial-img">
-                      <img src="assets2/images/client-1.jpg" alt="client" />
+                      <img style={{height:50, borderRadius:50/2}} src="https://cdn.pixabay.com/photo/2013/07/13/12/07/avatar-159236__340.png" alt="client" />
                     </div>
                   </div>
                   <div className="testimonial-client-name">
-                    <h3 className="h3-title">Christine Rose</h3>
-                    <span>Customer</span>
+                    <h3 className="h3-title">Jessy Bandya</h3>
+                    <span>Student</span>
                   </div>
                 </div>
                 <div className="testimonial-quote">
@@ -515,16 +446,16 @@ function Home() {
                 </div>
               </div>
               <div className="testimonial-box">
-                <p>"Proin feugiat tortor non neque eleifend, at fermentum est elementum. Ut mollis leo odio vulputate rutrum. Nunc sagittis sit amet ligula ut eleifend. Mauris consequat mauris sit amet turpis commodo fermentum. Quisque consequat tortor ut nisl finibus".</p>
+              <p>"I've obtained all the past papers with ease access, Thank you!"</p>
                 <div className="testimonial-client">
                   <div className="testimonial-client-img-box">
                     <div className="testimonial-img">
-                      <img src="assets2/images/client-2.jpg" alt="client" />
+                    <img style={{height:50, borderRadius:50/2}} src="https://cdn.pixabay.com/photo/2013/07/13/12/07/avatar-159236__340.png" alt="client" />
                     </div>
                   </div>
                   <div className="testimonial-client-name">
-                    <h3 className="h3-title">Christine Rose</h3>
-                    <span>Customer</span>
+                  <h3 className="h3-title">Arnold Sanga</h3>
+                  <span>Student</span>
                   </div>
                 </div>
                 <div className="testimonial-quote">
@@ -532,16 +463,16 @@ function Home() {
                 </div>
               </div>
               <div className="testimonial-box">
-                <p>"Proin feugiat tortor non neque eleifend, at fermentum est elementum. Ut mollis leo odio vulputate rutrum. Nunc sagittis sit amet ligula ut eleifend. Mauris consequat mauris sit amet turpis commodo fermentum. Quisque consequat tortor ut nisl finibus".</p>
+              <p>"I've obtained all the past papers with ease access, Thank you!"</p>
                 <div className="testimonial-client">
                   <div className="testimonial-client-img-box">
                     <div className="testimonial-img">
-                      <img src="assets2/images/client-3.jpg" alt="client" />
+                    <img style={{height:50, borderRadius:50/2}} src="https://cdn.pixabay.com/photo/2013/07/13/12/07/avatar-159236__340.png" alt="client" />
                     </div>
                   </div>
                   <div className="testimonial-client-name">
-                    <h3 className="h3-title">Christine Rose</h3>
-                    <span>Customer</span>
+                  <h3 className="h3-title">Odero Phelix</h3>
+                  <span>Student</span>
                   </div>
                 </div>
                 <div className="testimonial-quote">
@@ -555,16 +486,6 @@ function Home() {
     </section>
     {/*Testimonial End*/}
 
-
-
-
-    {/* Jquery JS Link */}
-    {/* Bootstrap JS Link */}
-    {/* Custom JS Link */}
-    {/* Slick Slider JS Link */}
-    {/* Wow Animation JS */}
-    {/*Banner Bg Animation JS*/}
-    {/*Magnific Popup JS*/}
   </div>
     </MDBox>
     <Footer />

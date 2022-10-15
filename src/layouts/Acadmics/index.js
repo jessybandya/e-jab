@@ -64,13 +64,6 @@ function Acadmics() {
   <DashboardLayout>
   <DashboardNavbar />
   <MDBox py={3}>
-  <center>
-  <MDButton
-  rel="noreferrer"
-  variant="gradient"
-  color={sidenavColor}>Select Your Engineering Department</MDButton>
-  </center>
-
 
   <div style={{display: "flex",flexWrap: "wrap",alignItems:"center",justifyContent: "center"}}>
   <MDButton

@@ -88,7 +88,7 @@ function Footer({ light }) {
                   fontWeight="regular"
                   color={light ? "white" : "dark"}
                 >
-                UoN_ACES
+                E-JAB
                 </MDTypography>
               </Link>
             </MDBox>

@@ -110,7 +110,7 @@ function DefaultNavbar({ transparent, light, action }) {
           pl={{ xs: 0, lg: 1 }}
         >
           <MDTypography variant="button" fontWeight="bold" color={light ? "white" : "dark"}>
-            UoN_ACES
+            E-JAB
           </MDTypography>
         </MDBox>
         <MDBox color="inherit" display={{ xs: "none", lg: "flex" }} m={0} p={0}>
@@ -138,7 +138,7 @@ function DefaultNavbar({ transparent, light, action }) {
                 color={action.color ? action.color : "info"}
                 size="small"
               >
-              UoN_ACES
+              E-JAB
               </MDButton>
             </MDBox>
           ) : (
@@ -153,7 +153,7 @@ function DefaultNavbar({ transparent, light, action }) {
                 size="small"
                 sx={{ mt: -0.3 }}
               >
-               UoN_ACES
+               E-JAB
               </MDButton>
             </MDBox>
           ))}
