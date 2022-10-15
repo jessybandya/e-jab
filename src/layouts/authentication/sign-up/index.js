@@ -330,17 +330,18 @@ function Cover() {
 
           <div style={{display: "flex"}}>
           <FormControl variant="standard" sx={{ mt: 1.2, minWidth: 120 }}>
-          <InputLabel  sx={{marginTop:-1}} id="demo-simple-select-standard-label">Aces Category</InputLabel>
+          <InputLabel  sx={{marginTop:-1}} id="demo-simple-select-standard-label">Engineering Department</InputLabel>
           <Select
             labelId="demo-simple-select-standard-label"
             id="demo-simple-select-standard"
             label="Aces Category1"
             onChange={(e) => setCategory(e.target.value)}
           >
-            <MenuItem value="Member">Member</MenuItem>
-            <MenuItem value="Non-Member">Non-Member</MenuItem>
-            <MenuItem value="Alumnus">Alumnus(masculine)</MenuItem>
-            <MenuItem value="Alumna">Alumna(feminine)</MenuItem>
+          <MenuItem value="Civil & Construction">Civil & Construction</MenuItem>
+          <MenuItem value="Electrical & Information">Electrical & Information</MenuItem>
+          <MenuItem value="Geospatial & Space Technology">Geospatial & Space Technology</MenuItem>
+          <MenuItem value="Mechanical & Manufacturing">Mechanical & Manufacturing</MenuItem>
+          <MenuItem value="Environmental & Biosystems">Environmental & Biosystems</MenuItem>
           </Select>
         </FormControl>
         <MDBox mb={1}>
@@ -471,17 +472,18 @@ function Cover() {
   
             <div style={{display: "flex"}}>
             <FormControl variant="standard" sx={{ mt: 1.2, minWidth: 120 }}>
-            <InputLabel  sx={{marginTop:-1}} id="demo-simple-select-standard-label">Aces Category</InputLabel>
+            <InputLabel  sx={{marginTop:-1}} id="demo-simple-select-standard-label">Engineering Department</InputLabel>
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
               label="Aces Category1"
               onChange={(e) => setCategory(e.target.value)}
             >
-              <MenuItem value="Member">Member</MenuItem>
-              <MenuItem value="Non-Member">Non-Member</MenuItem>
-              <MenuItem value="Alumnus">Alumnus(masculine)</MenuItem>
-              <MenuItem value="Alumna">Alumna(feminine)</MenuItem>
+              <MenuItem value="Civil & Construction">Civil & Construction</MenuItem>
+              <MenuItem value="Electrical & Information">Electrical & Information</MenuItem>
+              <MenuItem value="Geospatial & Space Technology">Geospatial & Space Technology</MenuItem>
+              <MenuItem value="Mechanical & Manufacturing">Mechanical & Manufacturing</MenuItem>
+              <MenuItem value="Environmental & Biosystems">Environmental & Biosystems</MenuItem>
             </Select>
           </FormControl>
           <MDBox mb={1}>

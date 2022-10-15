@@ -157,31 +157,44 @@ function DashboardNavbar({ absolute, light, isMini }) {
         </MDBox>
         {isMini ? null : (
           <MDBox sx={(theme) => navbarRow(theme, { isMini })}>
-            <MDBox pr={1}>
-              <MDInput label="Search here" />
-            </MDBox>
             <MDBox color={light ? "white" : "inherit"}>
 
+         <div style={{display:'flex',alignItems:'center'}}>
+         <div style={{marginLeft:6}}>
+         <Link to="/authentication/sign-up">
+         <MDTypography style={{marginTop:8}}>
+         <span>AboutUs</span>
+      </MDTypography>
+         </Link>
 
+      </div>
+      <div style={{marginLeft:6}}>
+      <Link to="/contact-us">
+      <MDTypography style={{marginTop:8}}>
+      <span>ContactUs</span>
+   </MDTypography>
+      </Link>
 
+   </div>
+         </div>
 
 
 
         <div>
         {!auth1?.currentUser?.uid ?(
-             <div style={{display:"flex"}}>
+             <div style={{display:"flex",alignItems:'center'}}>
                <div>
                  <Link to="/authentication/sign-in">
-                 <MDTypography>
-                 <span>SignIn</span>
+                 <MDTypography style={{marginTop:6,marginLeft:15}}>
+                 <Icon fontSize="small">login</Icon>
                </MDTypography>
                  </Link>
 
                </div>
-                <div style={{marginLeft:5}}>
+                <div style={{marginLeft:6}}>
                   <Link to="/authentication/sign-up">
-                  <MDTypography>
-                 <span>SignUp</span>
+                  <MDTypography style={{marginTop:8}}>
+                  <Icon fontSize="small">assignment</Icon>
                </MDTypography>
                   </Link>
 
@@ -216,7 +229,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
               ):(
                 <>
               {renderMenu()}
-                <div style={{display:"flex"}}>
+                <div style={{display:"flex",alignItems:'center'}}>
 
                 <div>
               <IconButton

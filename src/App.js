@@ -1,6 +1,4 @@
 import { useState, useEffect, useMemo } from "react";
-import Dashboard1 from "./layouts/dashboard/index.js"
-
 // react-router components
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
@@ -32,14 +30,11 @@ import createCache from "@emotion/cache";
 // Material Dashboard 2 React routes
 import routes from "./routes";
 import routes1 from "./routes1";
-import Nopage from "./layouts/Nopage"
 import PostView from "./layouts/PostView"
 // Material Dashboard 2 React contexts
 import { useMaterialUIController, setMiniSidenav, setOpenConfigurator } from "./context";
 import { auth1 } from "./components/firebase"
-import Fade from "react-reveal/Fade";
-import Flip from "react-reveal/Flip";
-import Chatbot from "react-chatbot-kit";
+
 
 // Images
 import brandWhite from "./assets/images/logo-ct.png";
@@ -48,9 +43,9 @@ import SignIn from "./layouts/authentication/sign-in";
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Test from "./components/Test/index.js";
+import ContactUs from "./layouts/Contact-us";
 
 export default function App() {
-  const [showBot, toggleBot] = useState(false);
   const [controller, dispatch] = useMaterialUIController();
   const {
     miniSidenav,
@@ -165,7 +160,7 @@ export default function App() {
             <>
               <Sidenav
                 color={sidenavColor}
-                brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
+                brand="assets2/images/favicon.png"
                 brandName="E-JAB"
                 routes={routes}
                 onMouseEnter={handleOnMouseEnter}
@@ -181,6 +176,7 @@ export default function App() {
             {getRoutes(routes)}
             <Route exact path="/authentication/sign-in" element={<SignIn />} />
             <Route exact path="/postview/:id/:uid" element={<PostView />} />
+            <Route exact path="/contact-us" element={<ContactUs />} />
 
             <Route path="*" element={<Navigate to="/home" />} />
              </Routes>
@@ -191,7 +187,7 @@ export default function App() {
             <>
               <Sidenav
                 color={sidenavColor}
-                brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
+                brand="assets2/images/favicon.png"
                 brandName="E-JAB"
                 routes={routes1}
                 onMouseEnter={handleOnMouseEnter}
@@ -207,6 +203,7 @@ export default function App() {
             <Route exact path="/authentication/sign-in" element={<SignIn />} />
             <Route exact path="/postview/:id/:uid" element={<PostView />} />
             <Route exact path="/test" element={<Test />} />
+            <Route exact path="/contact-us" element={<ContactUs />} />
             <Route path="*" element={<Navigate to="/home" />} />            
             </Routes>
           </>
@@ -223,7 +220,7 @@ export default function App() {
           <>
             <Sidenav
               color={sidenavColor}
-              brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
+              brand="assets2/images/favicon.png"
               brandName="E-JAB"
               routes={routes}
               onMouseEnter={handleOnMouseEnter}
@@ -242,6 +239,7 @@ export default function App() {
           <Route exact path="/authentication/sign-in" element={<SignIn />} />
           <Route exact path="/postview/:id/:uid" element={<PostView />} />
           <Route exact path="/test" element={<Test />} />
+          <Route exact path="/contact-us" element={<ContactUs />} />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
         </>
@@ -251,7 +249,7 @@ export default function App() {
           <>
             <Sidenav
               color={sidenavColor}
-              brand={(transparentSidenav && !darkMode) || whiteSidenav ? brandDark : brandWhite}
+              brand="assets2/images/favicon.png"
               brandName="E-JAB"
               routes={routes1}
               onMouseEnter={handleOnMouseEnter}
@@ -267,6 +265,7 @@ export default function App() {
           <Route exact path="/authentication/sign-in" element={<SignIn />} />
           <Route exact path="/postview/:id/:uid" element={<PostView />} />
           <Route exact path="/test" element={<Test />} />
+          <Route exact path="/contact-us" element={<ContactUs />} />
           <Route path="*" element={<Navigate to="/home" />} />
           
           </Routes>
