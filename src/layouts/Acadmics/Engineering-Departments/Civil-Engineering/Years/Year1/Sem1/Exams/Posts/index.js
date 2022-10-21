@@ -1,34 +1,17 @@
 import React, { forwardRef, useEffect, useState } from "react";
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import moment from 'moment'
-import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
-import ScrollableFeed from 'react-scrollable-feed'
 import swal from "@sweetalert/with-react";
-import SendIcon from '@mui/icons-material/Send';
 // import CommentReplies from "../CommentsReplies";
 import MDBox from "../../../../../../../../../components1/MDBox";
 import MDTypography from "../../../../../../../../../components1/MDTypography";
 import MDButton from "../../../../../../../../../components1/MDButton";
 import Grid from "@mui/material/Grid";
 import { auth1, db } from "../../../../../../../../../components/firebase";
-import MDInput from "../../../../../../../../../components1/MDInput";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import DownloadIcon from '@mui/icons-material/Download';
-import CommentIcon from '@mui/icons-material/Comment';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { useTheme } from '@mui/material/styles';
@@ -46,20 +29,17 @@ import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
 // Import styles
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
-import FileViewer from 'react-file-viewer';
-import { CustomErrorComponent } from 'custom-error';
-import Dialog from '@mui/material/Dialog';
-import ListItemText from '@mui/material/ListItemText';
-import ListItem from '@mui/material/ListItem';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
-import Toolbar from '@mui/material/Toolbar';
 import CloseIcon from '@mui/icons-material/Close';
 import Slide from '@mui/material/Slide';
-import { DialogActions } from "@mui/material";
 import { Button, Modal } from "react-bootstrap";
 import TextField from '@mui/material/TextField';
 import AddIcon from '@mui/icons-material/Add';
+import { Document, Page, pdfjs } from "react-pdf";
+import { useMaterialUIController } from "../../../../../../../../../context";
+import jsPDF from 'jspdf'
+import Comments from "./Comments";
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -141,93 +121,65 @@ function abbrNum(number, decPlaces) {
 }
 
 
+
+
 function Posts({ fromId, commentId, postId, timestamp, comment, descriptions, name, year, unit, file}) {
   const [profileUserData, setProfileUserData] = useState();
-  const [addComment, setAddComment] = useState("")
   const [profileUserData1, setProfileUserData1] = useState();
-  const [commentReply, setComentReply] = useState(0);
+  const [commentCount, setCommentCount] = useState(0);
+  const [solutionsCount, setSolutionsCount] = useState(0);
   const theme = useTheme();
   const [value, setValue] = React.useState(0);
   const [lgView, setLgView] = useState(false);
   const [lgMore, setLgMore] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const [visible1, setVisible1] = useState(false);
-  const defaultLayoutPluginInstance = defaultLayoutPlugin();
-  const type = 'png'
   const [open, setOpen] = React.useState(false);
   const [comment1, setComment1] = React.useState('');
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [controller ] = useMaterialUIController();
+  const { sidenavColor } = controller;
+  var FileSaver = require('file-saver');
+  const [currentUser, setCurrentUser] = useState('')
+
+  useEffect(() => {
+    db.collection('users').doc(`${auth1?.currentUser?.uid}`).onSnapshot((doc) => {
+      setCurrentUser(doc.data());
+    });
+}, []) 
+
+  const saveAsFun = () => {
+    FileSaver.saveAs(`${file}`, `${name}`);
+  }
 
   const handleChangeComment = (event) => {
     setComment1(event.target.value);
-  };
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
   };
 
   const handleChangeIndex = (index) => {
     setValue(index);
   };
 
-  const onError = (e) => {
-    alert(e, 'error')
-  }
-  const saveFile = () => {
-    saveAs(
-      `${file}`
-    );
-  };
+
   useEffect(() => {
     db.collection('users').doc(`${fromId}`).onSnapshot((doc) => {
         setProfileUserData(doc.data());
     });
 }, [])
-const [expanded, setExpanded] = React.useState(false);
 
 
-const handleExpandClick = () => {
-  setVisible1(true)
-};
-
-const commentPost = (event) => {
-  event.preventDefault(); 
-
-  if(!addComment){
-    swal("🔴 You cannot add an empty comment!")
-  }else{
-    db.collection("posts").doc(`${postId}`).collection("comments").doc(`${commentId}`).collection("replies").add({
-      ownerId: fromId,
+const commentPost = () => {
+  
+    db.collection("pastpapers").doc(`${postId}`).collection("comments").add({
       read: false,
       count:false,
       postId:postId,
-      comment: addComment,
       fromId:auth1?.currentUser?.uid,
+      comment: comment1,
       timestamp: Date.now(),
-  }).then(() => setAddComment(""));
-  db.collection("notifications").add({
-    ownerId: fromId,
-    read: false,
-    count:false,
-    postId,
-    comment: addComment,
-    type:"replies",
-    fromId:auth1?.currentUser?.uid,
-    timestamp: Date.now(),
-}).then(() => setAddComment(""));
-  setAddComment("")
+  }).then(() => setComment1(""));
 }
 
-setAddComment("")
 
-}
 useEffect(() => {
   db.collection('users').doc(`${auth1?.currentUser?.uid}`).onSnapshot((doc) => {
       setProfileUserData1(doc.data());
@@ -235,9 +187,9 @@ useEffect(() => {
 }, [])
 
 useEffect(() => {
-  db.collection('posts').doc(`${postId}`).collection("comments").doc(`${commentId}`).collection("replies").where("count", "==",false)
+  db.collection('pastpapers').doc(`${postId}`).collection("comments").where("count", "==",false)
   .onSnapshot(snapshot => (
-  setComentReply(snapshot.docs.length)
+  setCommentCount(snapshot.docs.length)
   ))
   }, []);
 
@@ -250,6 +202,22 @@ useEffect(() => {
   const handleChange0 = (event, newValue) => {
     setValue1(newValue);
   };
+
+  function changePage(offSet){
+    setPageNumber(prevPageNumber => prevPageNumber + offSet);
+  }
+
+  function changePageBack(){
+    changePage(-1)
+  }
+
+  function changePageNext(){
+    changePage(+1)
+  }
+
+  
+
+  
     return (
         <MDBox>
 
@@ -261,9 +229,11 @@ useEffect(() => {
           >
 
             <MDBox mt={1} mx={0.5} p={1}>
-              <MDTypography variant="button" fontWeight="regular" color="text" textTransform="capitalize">
-              {year}
-              </MDTypography>
+            <center>
+            <MDTypography variant="button" fontWeight="regular" color="text" textTransform="capitalize">
+            {year}
+            </MDTypography>          
+            </center>
               <MDBox mb={1}>
                   <MDTypography
                   color="text"
@@ -273,18 +243,8 @@ useEffect(() => {
                     {name}
                   </MDTypography>
               </MDBox>
-              <MDBox mb={3} lineHeight={0}>
-                <MDTypography variant="button" fontWeight="light" color="text">
-                {isReadMore ? descriptions?.slice(0, 35) : descriptions}
-                <span onClick={toggleReadMore} className="read-or-hide">
-                {descriptions?.length > 35 &&(
-                  <>
-                  {isReadMore ? <span style={{fontWeight: 'bold',cursor:'pointer'}}>...read more</span> : <span style={{fontWeight: 'bold',cursor:'pointer'}}> ...read less</span>}
-                  </>
-                )}
-                </span>
-                </MDTypography>
-              </MDBox>
+
+              
               <MDBox display="flex" justifyContent="space-between" alignItems="center">
               <MDButton 
               onClick={() => setLgView(true)}
@@ -298,10 +258,13 @@ useEffect(() => {
                   >
                     More
                   </MDButton>
+
+                  
                 <MDButton 
                 
                 variant="outlined"
                 color='info'
+                onClick={saveAsFun}
                 ><DownloadIcon /></MDButton>
               </MDBox>
             </MDBox>
@@ -312,23 +275,40 @@ useEffect(() => {
           style={{zIndex:2001}}
           show={lgView}
           onHide={() => setLgView(false)}
-          aria-labelledby="example-modal-sizes-title-lg"
+          aria-labelledby="contained-modal-title-vcenter"
         >
-        <Modal.Header style={{backgroundColor:'#1a2035',display: 'block'}}>
- 
-      <Modal.Title align="right"><CloseIcon fontSize="large" style={{color:'#0d6efd', cursor:'pointer'}} onClick={() => setLgView(false)}/></Modal.Title>
-      </Modal.Header>
-          <Modal.Body
-          style={{
-            overflowY: 'auto',
-            width: '100%',
-            backgroundColor:'#1a2035'
-           }}
-          >
+
+      <Modal.Body style={{
+        height: '100%',
+        width: '100%',
+        backgroundColor:'#1a2035',
+       }}>
           <MDTypography>
-          View PDF
+          <div>
+          <iframe src={`${file}#toolbar=0`} height="500px" width="100%" frameborder="0" ></iframe>
+      </div>
           </MDTypography>            
           </Modal.Body>
+          <Modal.Footer style={{backgroundColor:'#1a2035',display: 'block'}}>
+ 
+          <div align="right"> 
+          <a href={file} target="__blank">
+          <MDButton
+          rel="noreferrer"
+          variant="gradient"
+          style={{marginRight:5}}
+          color={sidenavColor}
+          >View On Web</MDButton>
+          </a>       
+          <MDButton
+          rel="noreferrer"
+          variant="gradient"
+          color={sidenavColor}
+          onClick={() => setLgView(false)}
+          >Cancel</MDButton>
+          </div>
+          </Modal.Footer>
+
         </Modal>
 
         <Modal
@@ -347,8 +327,8 @@ useEffect(() => {
         textColor="inherit"
         aria-label="full width tabs example"
       >
-        <Tab label="Comments (1.2K)" {...a11yProps(0)} />
-        <Tab label="Solutions" {...a11yProps(1)} />
+        <Tab label={`Solutions (${abbrNum(solutionsCount,1)})`} {...a11yProps(0)} />
+        <Tab label={`Comments (${abbrNum(commentCount,1)})`} {...a11yProps(1)} />
       </Tabs>
     </AppBar>
 
@@ -356,8 +336,8 @@ useEffect(() => {
     </Modal.Header>
     <Modal.Body 
     style={{
+      height: 'calc(95vh - 210px)',
       overflowY: 'auto',
-      width: '100%',
       backgroundColor:'#1a2035'
      }}
     >
@@ -373,12 +353,12 @@ useEffect(() => {
           >
             <TabPanel value={value1} index={0} dir={theme.direction}>
             <MDTypography>
-            Comments
+             <center>No solutions yet!</center>
             </MDTypography> 
             </TabPanel>
             <TabPanel value={value1} index={1} dir={theme.direction}>
             <MDTypography>
-            Solutions
+            <Comments postId={postId}/>
             </MDTypography>              
             </TabPanel>
           </SwipeableViews>
@@ -391,7 +371,7 @@ useEffect(() => {
 
     {auth1?.currentUser?.uid ?(
       <>
-      {value1 === 0 ?(
+      {value1 === 1 ?(
         <Modal.Footer
         style={{
           backgroundColor:'#1a2035',
@@ -406,7 +386,7 @@ useEffect(() => {
           <TextField
           id="full-width-text-field"
           label="leave a comment here..."
-          placeholder="Jessy, ready for your comment.😊"
+          placeholder={`${currentUser?.firstName}, ready for your comment...😊`}
           value={comment1}
           onChange={handleChangeComment}
           multiline
@@ -418,14 +398,14 @@ useEffect(() => {
      {!comment1 ?(
        <>
        <img
-       alt="Jessy Bandya"
-       src="http://www.wuyidoric.com.au/WuYiDoric/media/images/Projects/UniversityOfNairobiTowersProject/UniversityOfNairobiTowersProject_banner.jpg"
+       alt={`${currentUser?.firstName}`}
+       src={`${currentUser?.photoURL}`}
        style={{ width: 35, height: 35, borderRadius: 35/2, objectFit:'cover' }}
      />
        </>
      ):(
       <>
-      <i style={{color:'#0d6efd',cursor:'pointer'}} class="fa fa-paper-plane" aria-hidden="true"></i>
+      <i onClick={commentPost} style={{color:'#0d6efd',cursor:'pointer'}} class="fa fa-paper-plane" aria-hidden="true"></i>
       </>
      )}
      </div>
@@ -448,6 +428,7 @@ useEffect(() => {
       </MDButton>
         <MDButton
           color='info'
+          onClick={saveAsFun}
         >
         Download <DownloadIcon/>
         </MDButton>
@@ -467,6 +448,7 @@ useEffect(() => {
       >
       <MDButton
         color='info'
+        onClick={saveAsFun}
       >
       Download <DownloadIcon/>
       </MDButton>

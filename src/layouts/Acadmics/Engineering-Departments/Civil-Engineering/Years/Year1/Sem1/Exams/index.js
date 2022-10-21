@@ -16,12 +16,13 @@ function Exams({unit}) {
       return unsubscribe;
     }, []);
     return (
-        <center style={{display:'flex',flexWrap:'wrap'}}>
+        <div className="containerGrid">
         {posts?.length > 0 ?(
           <>
           {Array.from(posts).map((post) => (
             <Posts
               key={post.id}
+              postId={post.id}
               descriptions={post.data.descriptions}
               pastpaperId={post.id}
               timestamp={post.data.timestamp}
@@ -39,7 +40,7 @@ function Exams({unit}) {
           <span style={{ justifyContent: "center", position: "fixed", top: "55%" }}>Loading...please wait</span>
       </div>
         )}
-        </center>
+        </div>
 
     )
 }

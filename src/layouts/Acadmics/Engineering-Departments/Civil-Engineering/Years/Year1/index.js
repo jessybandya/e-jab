@@ -254,8 +254,8 @@ function Year1() {
     aria-label="full width tabs example"
   >
     <Tab label="EXAMS" {...a11yProps(0)} />
-    <Tab label="CATS" {...a11yProps(1)} />
-    <Tab label="ASSIGNMENTS" {...a11yProps(2)} />
+    <Tab label="SUPPS" {...a11yProps(1)} />
+    <Tab label="CATS" {...a11yProps(2)} />
   </Tabs>
 </AppBar>
 <div style={{alignItems:'center',display:'flex',justifyContent: 'center',marginTop:10}}>
@@ -322,13 +322,13 @@ style={{
         </TabPanel>
         <TabPanel value={value1} index={1} dir={theme.direction}>
         <MDTypography>
-        Cats
+        Supps
         </MDTypography>
           
         </TabPanel>
         <TabPanel value={value1} index={2} dir={theme.direction}>
         <MDTypography>
-        Assignments
+        Cats
         </MDTypography>
         </TabPanel>
       </SwipeableViews>

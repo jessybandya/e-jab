@@ -1,3 +1,9 @@
 *{
   margin: 0;
 }
+
+.containerGrid {
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}

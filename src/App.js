@@ -44,6 +44,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Test from "./components/Test/index.js";
 import ContactUs from "./layouts/Contact-us";
+import AboutUs from "./layouts/About-us";
 
 export default function App() {
   const [controller, dispatch] = useMaterialUIController();
@@ -177,6 +178,7 @@ export default function App() {
             <Route exact path="/authentication/sign-in" element={<SignIn />} />
             <Route exact path="/postview/:id/:uid" element={<PostView />} />
             <Route exact path="/contact-us" element={<ContactUs />} />
+            <Route exact path="/about-us" element={<AboutUs />} />
 
             <Route path="*" element={<Navigate to="/home" />} />
              </Routes>
@@ -204,6 +206,7 @@ export default function App() {
             <Route exact path="/postview/:id/:uid" element={<PostView />} />
             <Route exact path="/test" element={<Test />} />
             <Route exact path="/contact-us" element={<ContactUs />} />
+            <Route exact path="/about-us" element={<AboutUs />} />
             <Route path="*" element={<Navigate to="/home" />} />            
             </Routes>
           </>
@@ -240,6 +243,7 @@ export default function App() {
           <Route exact path="/postview/:id/:uid" element={<PostView />} />
           <Route exact path="/test" element={<Test />} />
           <Route exact path="/contact-us" element={<ContactUs />} />
+          <Route exact path="/about-us" element={<AboutUs />} />
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
         </>
@@ -266,6 +270,7 @@ export default function App() {
           <Route exact path="/postview/:id/:uid" element={<PostView />} />
           <Route exact path="/test" element={<Test />} />
           <Route exact path="/contact-us" element={<ContactUs />} />
+          <Route exact path="/about-us" element={<AboutUs />} />
           <Route path="*" element={<Navigate to="/home" />} />
           
           </Routes>

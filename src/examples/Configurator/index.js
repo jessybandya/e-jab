@@ -25,9 +25,7 @@ import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import Icon from "@mui/material/Icon";
 
-// @mui icons
-import TwitterIcon from "@mui/icons-material/Twitter";
-import FacebookIcon from "@mui/icons-material/Facebook";
+
 
 // Material Dashboard 2 React components
 import MDBox from "../../components1/MDBox";
@@ -65,6 +63,10 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import typography from "../../assets/theme/base/typography";
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 function Configurator() {
   const [controller, dispatch] = useMaterialUIController();
@@ -321,7 +323,7 @@ function Configurator() {
       >
         &copy; {new Date().getFullYear()}, made with
         <MDBox fontSize={size.md} color="text" mb={-0.5} mx={0.25}>
-          <Icon style={{color: "#3498db"}} fontSize="inherit">
+          <Icon fontSize="inherit">
             favorite
           </Icon>
         </MDBox>
@@ -333,7 +335,39 @@ function Configurator() {
         </Link>
         for a better future.
       </MDBox>
-
+      <MDBox
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      flexWrap="wrap"
+      color="text"
+      fontSize={size.sm}
+      px={1.5}
+    >
+    
+    <div style={{display:'flex', alignItems:'center'}}>
+    <MDBox fontSize={size.md} color="text" mb={-0.5} mx={1.5}>
+    <Link href="https://twitter.com/jessybandya" target="__blank">
+    <TwitterIcon color="inherit" fontSize="inherit"/>
+    </Link>
+  </MDBox>
+  <MDBox fontSize={size.md} color="text" mb={-0.5} mx={1.5}>
+  <Link href="https://www.instagram.com/jessybandya/" target="__blank">
+  <InstagramIcon color="inherit" fontSize="inherit"/>
+  </Link>
+</MDBox>
+<MDBox fontSize={size.md} color="text" mb={-0.5} mx={1.5}>
+<Link href="https://www.linkedin.com/in/jessy-bandya-7934a01b4/" target="__blank">
+<LinkedInIcon color="inherit" fontSize="inherit"/>
+</Link>
+</MDBox>
+<MDBox fontSize={size.md} color="text" mb={-0.5} mx={1.5}>
+<Link href="https://github.com/jessybandya" target="__blank">
+<GitHubIcon color="inherit" fontSize="inherit"/>
+</Link>
+</MDBox>
+    </div>
+    </MDBox>
       </MDBox>
     </ConfiguratorRoot>
   );
