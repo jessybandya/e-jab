@@ -1,21 +1,20 @@
 import firebase from 'firebase';
 // import { ENV } from '../../env';
 const config = {
-  // apiKey: ENV.apiKey,
-  // authDomain: ENV.authDomain,
-  // projectId: ENV.projectId,
-  // storageBucket: ENV.storageBucket,
-  // messagingSenderId: ENV.messagingSenderId,
-  // appId: ENV.appId,
-  // measurementId: ENV.measurementId
+  apiKey: "AIzaSyDRgBNJymm2f-uuFZ0jnl---VmONWVZPMI",
 
-  apiKey: "AIzaSyDLXSPti08D9lynzBA8e9pfBz7R5PiYxXM",
-  authDomain: "odero-85bdb.firebaseapp.com",
-  projectId: "odero-85bdb",
-  storageBucket: "odero-85bdb.appspot.com",
-  messagingSenderId: "437962805696",
-  appId: "1:437962805696:web:2ed9b8f9eddbc1a1637825",
-  measurementId: "G-RR75VG7ELL",
+  authDomain: "get-ejab.firebaseapp.com",
+
+  projectId: "get-ejab",
+
+  storageBucket: "get-ejab.appspot.com",
+
+  messagingSenderId: "769040598918",
+
+  appId: "1:769040598918:web:90177458510c0b1f074e07",
+
+  measurementId: "G-4LGQY4WXYF"
+
 };
 
 firebase.initializeApp(config);

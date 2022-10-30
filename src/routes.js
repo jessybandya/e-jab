@@ -12,7 +12,7 @@ import Acadmics from "./layouts/Acadmics"
 import People from "./layouts/People";
 import Skills from "./layouts/Skills";
 import Orientation from "./layouts/Orientation";
-import Business from "./layouts/Business";
+import Admin from "./layouts/Admin";
 import Showcase from "./layouts/Showcase";
 import Calender from "./layouts/Calender";
 import Lecturers from "./layouts/Lecturers";
@@ -20,7 +20,7 @@ import Badge from '@mui/material/Badge';
 // @mui icons
 import Icon from "@mui/material/Icon";
 import Announcements from "./layouts/Announcements";
-
+import { auth1 } from "../src/components/firebase"
 
 const routes = [
   {
@@ -127,13 +127,14 @@ const routes = [
   //   route: "/classroom",
   //   component: <Calender />,
   // },
+  
   // {
   //   type: "collapse",
-  //   name: "Business",
-  //   key: "business",
+  //   name: "Admin",
+  //   key: "admin",
   //   icon: <Icon fontSize="small">business</Icon>,
-  //   route: "/business",
-  //   component: <Business />,
+  //   route: "/admin",
+  //   component: <Admin />,
   // }
 ];
 

@@ -161,7 +161,7 @@ function DashboardNavbar({ absolute, light, isMini }) {
 
          <div style={{display:'flex',alignItems:'center'}}>
          <div style={{marginLeft:6}}>
-         <Link to="/authentication/sign-up">
+         <Link to="/about-us">
          <MDTypography style={{marginTop:8}}>
          <span>AboutUs</span>
       </MDTypography>

@@ -188,18 +188,36 @@ function Sidenav({ color, brand, brandName, routes, ...rest }) {
       <List>{renderRoutes}</List>
       <MDBox p={2} mt="auto">
       {auth1?.currentUser?.uid ?(
-        <MDButton
-        component={NavLink} to="/authentication/sign-in"
-          // href="https://www.creative-tim.com/product/material-dashboard-pro-react"
-          // target="_blank"
-          rel="noreferrer"
-          variant="gradient"
-          color={sidenavColor}
-          fullWidth
-          onClick={logout}
-        >
-          Logout
-        </MDButton>
+        <>
+        {auth1?.currentUser?.uid === "r6dBO2w6K4N8Tt3oUR2d0LXMd1P2" ?(
+          <MDButton
+          component={NavLink} to="/admin"
+            // href="https://www.creative-tim.com/product/material-dashboard-pro-react"
+            // target="_blank"
+            rel="noreferrer"
+            variant="gradient"
+            color={sidenavColor}
+            fullWidth
+          >
+          <Icon style={{marginRight:2}} fontSize="small">business</Icon> ADMIN
+          </MDButton>
+        ):(
+          <MDButton
+          component={NavLink} to="/authentication/sign-in"
+            // href="https://www.creative-tim.com/product/material-dashboard-pro-react"
+            // target="_blank"
+            rel="noreferrer"
+            variant="gradient"
+            color={sidenavColor}
+            fullWidth
+            onClick={logout}
+          >
+            Logout
+          </MDButton>
+        )}
+
+        </>
+
       ):(
         <MDButton
         component={NavLink} to="/authentication/sign-up"

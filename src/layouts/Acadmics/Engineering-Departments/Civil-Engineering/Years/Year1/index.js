@@ -209,14 +209,12 @@ function Year1() {
       label="Year 1 Sementer 1"
       onChange={handleChange}
     >
-      <MenuItem onClick={handleClickOpen('paper')} value="CCS 001 COMMUNICATION SKILLS">CCS 001 COMMUNICATION SKILLS</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 161 PURE MATHEMATICS">FCE 161 PURE MATHEMATICS</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 101 INTRODUCTION TO CIVIL ENGINEERING">FCE 101 INTRODUCTION TO CIVIL ENGINEERING</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="CCS HIV/AIDS">CCS HIV/AIDS</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 163 ENGINEERING MECHANICS (Statics)">FCE 163 ENGINEERING MECHANICS (Statics)</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 165 COMPUTER SCIENCE">FCE 165 COMPUTER SCIENCE</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 131 PHYSICS">FCE 131 PHYSICS</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 181 CHEMISTRY">FCE 181 CHEMISTRY</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 101">FCE 101 INTRODUCTION TO CIVIL ENGINEERING</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 131">FCE 131 PHYSICS 1A</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 161">FCE 161 PURE MATHEMATICS 1A</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 163">FCE 163 ENGINEERING MECHANICS (Statics)</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 165">FCE 165 COMPUTER SCIENCE 1</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 181">FCE 181 CHEMISTRY 1A</MenuItem>
 
     </Select>
   </FormControl>
@@ -228,12 +226,10 @@ function Year1() {
     id="demo-simple-select"
     value={sem2}
     sx={{ height: 40}}
-    label="Year 2 Sementer 2"
+    label="Year 1 Sementer 2"
     onChange={handleChange2}
   >
-  <MenuItem onClick={handleClickOpen2('paper')} value="FCE 201 Phyics 2">FCE 201 Phyics 2</MenuItem>
-  <MenuItem onClick={handleClickOpen2('paper')} value="FCE 112 Mathematics 2">FCE 112 Mathematics 2</MenuItem>
-  <MenuItem onClick={handleClickOpen2('paper')} value="C001 COMMUNICATION SKILLS 2">C001 COMMUNICATION SKILLS 2</MenuItem>
+  <MenuItem>work in progress...</MenuItem>
   </Select>
 </FormControl>
 </Box>
@@ -254,8 +250,7 @@ function Year1() {
     aria-label="full width tabs example"
   >
     <Tab label="EXAMS" {...a11yProps(0)} />
-    <Tab label="CATS" {...a11yProps(1)} />
-    <Tab label="ASSIGNMENTS" {...a11yProps(2)} />
+    <Tab label="SUPPS" {...a11yProps(1)} />
   </Tabs>
 </AppBar>
 <div style={{alignItems:'center',display:'flex',justifyContent: 'center',marginTop:10}}>
@@ -273,6 +268,7 @@ function Year1() {
     label="Select Academic year"
     onChange={handleChange30}
   >
+    <MenuItem value="">Select Academic year</MenuItem>
     <MenuItem value="2022/23">2022/23</MenuItem>
     <MenuItem value="2021/22">2021/22</MenuItem>
     <MenuItem value="2020/21">2020/21</MenuItem>
@@ -322,14 +318,9 @@ style={{
         </TabPanel>
         <TabPanel value={value1} index={1} dir={theme.direction}>
         <MDTypography>
-        Cats
+        Supps
         </MDTypography>
           
-        </TabPanel>
-        <TabPanel value={value1} index={2} dir={theme.direction}>
-        <MDTypography>
-        Assignments
-        </MDTypography>
         </TabPanel>
       </SwipeableViews>
     </Box>

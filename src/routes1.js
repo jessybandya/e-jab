@@ -12,7 +12,7 @@ import Acadmics from "./layouts/Acadmics"
 import People from "./layouts/People";
 import Skills from "./layouts/Skills";
 import Orientation from "./layouts/Orientation";
-import Business from "./layouts/Business";
+import Admin from "./layouts/Admin";
 import Showcase from "./layouts/Showcase";
 import Calender from "./layouts/Calender";
 import Lecturers from "./layouts/Lecturers";

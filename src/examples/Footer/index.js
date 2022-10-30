@@ -26,6 +26,10 @@ import MDTypography from "../../components1/MDTypography";
 
 // Material Dashboard 2 PRO React base styles
 import typography from "../../assets/theme/base/typography";
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 function Footer({ company, links }) {
   const { href, name } = company;
@@ -42,60 +46,77 @@ function Footer({ company, links }) {
       </MDBox>
     ));
 
-  return (
-    <center>
-    <MDBox
-      width="100%"
-      display="flex"
-      flexDirection={{ xs: "column", lg: "column" }}
-      justifyContent="space-between"
-      alignItems="center"
-      px={1.5}
-    >
+    return (
       <MDBox
+        width="100%"
         display="flex"
-        justifyContent="center"
+        flexDirection={{ xs: "column", lg: "row" }}
+        justifyContent="space-between"
         alignItems="center"
-        flexWrap="wrap"
-        color="text"
-        fontSize={size.sm}
         px={1.5}
       >
-        &copy; {new Date().getFullYear()}, made with
-        <MDBox fontSize={size.md} color="text" mb={-0.5} mx={0.25}>
-          <Icon style={{color: "#3498db"}} fontSize="inherit">
-            favorite
-          </Icon>
+        <MDBox
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          flexWrap="wrap"
+          color="text"
+          fontSize={size.sm}
+          px={1.5}
+        >
+          &copy; {new Date().getFullYear()}, made with
+          <MDBox fontSize={size.md} color="text" mb={-0.5} mx={0.25}>
+            <Icon color="inherit" fontSize="inherit">
+              favorite
+            </Icon>
+          </MDBox>
+          by
+          <Link href={href} target="_blank">
+            <MDTypography variant="button" fontWeight="medium">
+              &nbsp;{name}&nbsp;
+            </MDTypography>
+          </Link>
+          for a better future.
         </MDBox>
-        by
-        <Link href="https://laughing-darwin-c668f3.netlify.app/" target="_blank">
-          <MDTypography variant="button" fontWeight="medium">
-            &nbsp;Jessy Bandya&nbsp;
-          </MDTypography>
+        <MDBox
+          component="ul"
+          sx={({ breakpoints }) => ({
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "center",
+            listStyle: "none",
+            mt: 3,
+            mb: 0,
+            p: 0,
+  
+            [breakpoints.up("lg")]: {
+              mt: 0,
+            },
+          })}
+        >
+        <MDBox fontSize={size.md} color="text" mb={-0.5} mx={1.0}>
+        <Link href="https://twitter.com/jessybandya" target="__blank">
+        <TwitterIcon color="inherit" fontSize="inherit"/>
         </Link>
-        for a better future.
       </MDBox>
-      <MDBox
-        component="ul"
-        sx={({ breakpoints }) => ({
-          display: "flex",
-          flexWrap: "wrap",
-          alignItems: "center",
-          justifyContent: "center",
-          listStyle: "none",
-          mt: 3,
-          mb: 0,
-          p: 0,
-
-          [breakpoints.up("lg")]: {
-            mt: 0,
-          },
-        })}
-      >
-        {renderLinks()}
-      </MDBox>
+      <MDBox fontSize={size.md} color="text" mb={-0.5} mx={1.0}>
+      <Link href="https://www.instagram.com/jessybandya/" target="__blank">
+      <InstagramIcon color="inherit" fontSize="inherit"/>
+      </Link>
     </MDBox>
-        {/* Scroll To Top Start */}
+    <MDBox fontSize={size.md} color="text" mb={-0.5} mx={1.0}>
+    <Link href="https://www.linkedin.com/in/jessy-bandya-7934a01b4/" target="__blank">
+    <LinkedInIcon color="inherit" fontSize="inherit"/>
+    </Link>
+  </MDBox>
+  <MDBox fontSize={size.md} color="text" mb={-0.5} mx={1.0}>
+  <Link href="https://github.com/jessybandya" target="__blank">
+  <GitHubIcon color="inherit" fontSize="inherit"/>
+   </Link>
+</MDBox>
+        </MDBox>
+                {/* Scroll To Top Start */}
 
       {/* Scroll To Top End*/}
         {/* Bubbles Animation Start */}
@@ -112,26 +133,19 @@ function Footer({ company, links }) {
         <div className="bubble x10" />
       </div>
       {/* Bubbles Animation End*/}
-    </center>
-
-  );
-}
-
-// Setting default values for the props of Footer
-Footer.defaultProps = {
-  company: { href: "", name: "Creative Tim" },
-  links: [
-    { href: "", name: "" },
-    { href: "", name: "" },
-    { href: "", name: "" },
-    { href: "", name: "" },
-  ],
-};
-
-// Typechecking props for the Footer
-Footer.propTypes = {
-  company: PropTypes.objectOf(PropTypes.string),
-  links: PropTypes.arrayOf(PropTypes.object),
-};
+      </MDBox>
+    );
+  }
+  
+  // Setting default values for the props of Footer
+  Footer.defaultProps = {
+    company: { href: "https://laughing-darwin-c668f3.netlify.app/", name: "Jessy Bandya" },
+  };
+  
+  // Typechecking props for the Footer
+  Footer.propTypes = {
+    company: PropTypes.objectOf(PropTypes.string),
+    links: PropTypes.arrayOf(PropTypes.object),
+  };
 
 export default Footer;
