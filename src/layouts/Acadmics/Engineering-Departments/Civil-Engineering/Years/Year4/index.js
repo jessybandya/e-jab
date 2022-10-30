@@ -200,33 +200,34 @@ function Year1() {
   <div >
   <Box sx={{ minWidth: 100,display: "flex" }}>
   <FormControl fullWidth>
-    <InputLabel id="demo-simple-select-label">Year 1 Sementer 1</InputLabel>
+    <InputLabel id="demo-simple-select-label">Year 4 Sementer 1</InputLabel>
     <Select
       labelId="demo-simple-select-label"
       id="demo-simple-select"
       value={sem1}
       sx={{ height: 40}}
-      label="Year 1 Sementer 1"
+      label="Year 4 Sementer 1"
       onChange={handleChange}
     >
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 101">FCE 101 INTRODUCTION TO CIVIL ENGINEERING</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 131">FCE 131 PHYSICS 1A</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 161">FCE 161 PURE MATHEMATICS 1A</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 163">FCE 163 ENGINEERING MECHANICS (Statics)</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 165">FCE 165 COMPUTER SCIENCE 1</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 181">FCE 181 CHEMISTRY 1A</MenuItem>
-
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 401">FCE 401 THEORY OF STRUCTURES</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 411">FCE 411 GEOTECHNICAL ENGINEERING</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 431">FCE 431 STRUCTURAL DESIGN</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 421">FCE 421 FLUID MECHANICS</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 451">FCE 451 ENGINEERING SURVEYING</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 461">FCE 461 STATISTICS</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 481">FCE 481 PUBLIC HEALTH ENGINEERING</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 425">FCE 425 HYDROLOGY</MenuItem>
     </Select>
   </FormControl>
 
   <FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">Year 1 Sementer 2</InputLabel>
+  <InputLabel id="demo-simple-select-label">Year 4 Sementer 2</InputLabel>
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
     value={sem2}
     sx={{ height: 40}}
-    label="Year 1 Sementer 2"
+    label="Year 4 Sementer 2"
     onChange={handleChange2}
   >
   <MenuItem>work in progress...</MenuItem>

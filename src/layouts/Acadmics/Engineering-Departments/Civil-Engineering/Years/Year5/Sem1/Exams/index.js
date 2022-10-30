@@ -4,6 +4,7 @@ import Posts from "./Posts"
 import Grid from "@mui/material/Grid";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import MDTypography from '../../../../../../../../components1/MDTypography';
 
 function Exams({unit}) {
     const [posts, setPosts] = useState([]);

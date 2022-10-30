@@ -7,3 +7,6 @@
   display: flex;
   flex-wrap: wrap;
 }
+.ant-spin-dot-item {
+  background-color: #fff;
+}

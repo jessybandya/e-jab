@@ -1,19 +1,3 @@
-/**
-=========================================================
-* Material Dashboard 2 React - v2.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/material-dashboard-react
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
-
-Coded by www.creative-tim.com
-
- =========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
-
-// react-router-dom components
 import React, {useState, useEffect} from "react"
 // @mui material components
 import Card from "@mui/material/Card";
@@ -41,6 +25,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { motion } from "framer-motion"
+import CancelIcon from '@mui/icons-material/Cancel';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import { useFlutterwave, closePaymentModal } from 'flutterwave-react-v3';
 
 
 const buttonVariants = {
@@ -98,16 +87,74 @@ function Cover() {
   const [year, setYear] = useState("");
   const [loading,setLoading] = useState(false)
   const [open2, setOpen2] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
+  const [clickedPay, setClickedPay] = useState(false)
+  const [scroll, setScroll] = React.useState('paper');
+
+  const config = {
+    public_key: 'FLWPUBK-cdcdf33bafedf13c157a3d4ac1999332-X',
+    tx_ref: Date.now(),
+    amount: 30,
+    currency: 'KES',
+    payment_options:"mobilemoney",
+    payment_plan:"3341",
+    customer: {
+      email: `${email}`,
+      phone_number: '',
+      name: `${firstName} ${lastName}`,
+    },
+    // mobilemoney
+    customizations: {
+      title: 'E-JAB',
+      description: 'Monthly Subscription of KSH.30 for website mentainance.',
+      logo: 'https://st2.depositphotos.com/4403291/7418/v/450/depositphotos_74189661-stock-illustration-online-shop-log.jpg',
+    },
+  };
+  const handleFlutterPayment = useFlutterwave(config);
+
+
+
+  const handleClickOpen = (scrollType) => () => {
+    setOpen(true);
+    setScroll(scrollType);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleClose2 = () => {
     setOpen2(false);
   };
 
+  const havePaid = () => {
+
+
+    db.collection("subscribed").add({
+      paid:true,
+      name:`${firstName} ${lastName}`,
+      timestamp: Date.now(),
+  }).then(() => 
+  alert("Thank you for your successfully subscription for web mentainance!"));
+  setOpen(false)
+}
+
+  const subScribe = () => {
+    handleFlutterPayment({
+      callback: (response) => {
+        //  console.log(response);
+         if(response.status == "successful"){
+          havePaid()
+         }else{
+           alert("Transaction did not work!")
+         }
+          closePaymentModal() // this will close the modal programmatically
+      },
+      onClose: () => {},
+    });
+  }
+
   const register = (event) => {
     event.preventDefault();
-    // if (birthday[2] >= 2010) {
-    //     return alert("You are not eligible to register to Facebook!")
-    // }
     setLoading(true)
     let errors = {};
 
@@ -135,20 +182,20 @@ function Cover() {
           errors.year = toast.error('Year of study is required');
       }else  if (!email) {
         setLoading(false)
-        errors.email = toast.error('Email required');
+        errors.email = toast.error('School Email required');
        }else if (!/\S+@[students]+\.[uonbi]+\.[ac]+\.[ke]+/.test(email)) {
         setLoading(false)
         errors.email = toast.error('Student Email address is invalid\nFormat (...@students.uonbi.ac.ke)');
       }else if(!registrationNo.trim()){
             setLoading(false)
             errors.registrationNo = toast.error('Registration number is required');
-        }else if (!/^[F16]||[f16]+/.test(registrationNo)) {
+        }else if (!/^[F]||[f]+/.test(registrationNo)) {
             setLoading(false)
-            errors.registrationNo = toast.error("Your Registration number shows you don't belong to civil engineering department");
+            errors.registrationNo = toast.error("Your Registration number shows you don't belong to engineering faculty!");
 
         }else if(!category.trim()){
           setLoading(false)
-          errors.year = toast.error('Aces Categry is required');
+          errors.year = toast.error('Deaprtment is required');
         }else if (!password) {
                 setLoading(false)
              errors.password = toast.error('Password is required');
@@ -170,49 +217,52 @@ function Cover() {
                     
                             if (resultSnapShot.size == 0) {
                                 //Proceed
-                    
-                                auth1
-                                .createUserWithEmailAndPassword(email, password)
-                                .then((auth) => {
-                                    if (auth.user) {
-                                        auth.user.updateProfile({
-                                            displayName: username,
-                                            photoURL: "https://www.seekpng.com/png/full/73-730482_existing-user-default-avatar.png"
-                                        }).then((s) => {
-                                            db.collection('users').doc(auth.user.uid).set({
-                                                uid: auth.user.uid,
-                                                firstName,
-                                                lastName,
-                                                username,
-                                                registrationNumber: registrationNo,
-                                                email: auth.user.email,
-                                                photoURL: "https://www.seekpng.com/png/full/73-730482_existing-user-default-avatar.png",
-                                                year,
-                                                gender: "N/A",
-                                                bio: "",
-                                                read: true,
-                                                category,
-                                                others: "N/A",
-                                                // post: member,
-                                                timestamp: Date.now()
-                                            })
-                                                .then((r) => {
-                                                    setLoading(false)
-                                                    toast.success("Succesfully created an account.")
-                                                    history(`/announcements`)
-                                                })
-                                        })
-                                    }
-                                })
-                                .catch((e) => {
-                                        toast.error(e.message)
-                                        setLoading(false)
-                                });
+                                setOpen(true)
+                                
+                                 if(open === false){
+                                  auth1
+                                  .createUserWithEmailAndPassword(email, password)
+                                  .then((auth) => {
+                                      if (auth.user) {
+                                          auth.user.updateProfile({
+                                              displayName: username,
+                                              photoURL: "https://www.seekpng.com/png/full/73-730482_existing-user-default-avatar.png"
+                                          }).then((s) => {
+                                              db.collection('users').doc(auth.user.uid).set({
+                                                  uid: auth.user.uid,
+                                                  firstName,
+                                                  lastName,
+                                                  username,
+                                                  registrationNumber: registrationNo,
+                                                  email: auth.user.email,
+                                                  photoURL: "https://www.seekpng.com/png/full/73-730482_existing-user-default-avatar.png",
+                                                  year,
+                                                  gender: "N/A",
+                                                  bio: "",
+                                                  read: true,
+                                                  department:category,
+                                                  others: "N/A",
+                                                  // post: member,
+                                                  timestamp: Date.now()
+                                              })
+                                                  .then((r) => {
+                                                      setLoading(false)
+                                                      toast.success("Succesfully created an account.")
+                                                      history(`/home`)
+                                                  })
+                                          })
+                                      }
+                                  })
+                                  .catch((e) => {
+                                          toast.error(e.message)
+                                          setLoading(false)
+                                  });
+                                 }
                     
                             } else {
                                 //Already registered
                                 setLoading(false)
-                                toast.error("The email you enterd already in use")
+                                toast.error("The email you enterd already in use!")
                             }
                     
                         })
@@ -522,6 +572,30 @@ function Cover() {
       </motion.div>
       </>
     )}
+
+
+    <Dialog
+    open={open}
+    onClose={handleClose}
+    scroll={scroll}
+    aria-labelledby="scroll-dialog-title"
+    aria-describedby="scroll-dialog-description"
+    style={{width: "100%"}}
+    fullWidth
+  >
+    <MDBox><DialogTitle   style={{backgroundColor: "#1a2035",border: "1px solid #1a2035"}}
+    id="scroll-dialog-title">
+  
+    <div style={{display: "flex",justifyContent: "space-between"}}>
+    <div></div> <div></div> <div> <CancelIcon fontSize='medium' onClick={handleClose} style={{cursor: "pointer",color: "#fff"}}/></div>
+    </div>  
+    </DialogTitle></MDBox>
+    <DialogContent style={{backgroundColor: "#1a2035"}}>
+       <h1>Hello</h1>
+       <button onClick={subScribe}>PAY</button>
+     </DialogContent>
+
+  </Dialog>
    
      
     </CoverLayout>

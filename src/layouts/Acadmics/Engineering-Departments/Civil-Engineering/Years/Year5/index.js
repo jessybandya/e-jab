@@ -200,33 +200,34 @@ function Year1() {
   <div >
   <Box sx={{ minWidth: 100,display: "flex" }}>
   <FormControl fullWidth>
-    <InputLabel id="demo-simple-select-label">Year 1 Sementer 1</InputLabel>
+    <InputLabel id="demo-simple-select-label">Year 5 Sementer 1</InputLabel>
     <Select
       labelId="demo-simple-select-label"
       id="demo-simple-select"
       value={sem1}
       sx={{ height: 40}}
-      label="Year 1 Sementer 1"
+      label="Year 5 Sementer 1"
       onChange={handleChange}
     >
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 101">FCE 101 INTRODUCTION TO CIVIL ENGINEERING</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 131">FCE 131 PHYSICS 1A</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 161">FCE 161 PURE MATHEMATICS 1A</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 163">FCE 163 ENGINEERING MECHANICS (Statics)</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 165">FCE 165 COMPUTER SCIENCE 1</MenuItem>
-      <MenuItem onClick={handleClickOpen('paper')} value="FCE 181">FCE 181 CHEMISTRY 1A</MenuItem>
-
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 545">FCE 545 TRANSPORTATION ENGINEERING</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 511">FCE 511 GEOTECHNICAL ENGINEERING</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 531">FCE 531 ADVANCED STRUCTURAL DESIGN</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 564">FCE 564 OPERATIONS RESEARCH</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 551">FCE 551 ENGINEERING SURVEYING</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 590">FCE 590 FINAL YEAR PROJECT</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 581">FCE 581 PUBLIC HEALTH ENGINEERING</MenuItem>
+      <MenuItem onClick={handleClickOpen('paper')} value="FCE 525">FCE 525 WATER RESOURCES ENGINEERING</MenuItem>
     </Select>
   </FormControl>
 
   <FormControl fullWidth>
-  <InputLabel id="demo-simple-select-label">Year 1 Sementer 2</InputLabel>
+  <InputLabel id="demo-simple-select-label">Year 5 Sementer 2</InputLabel>
   <Select
     labelId="demo-simple-select-label"
     id="demo-simple-select"
     value={sem2}
     sx={{ height: 40}}
-    label="Year 1 Sementer 2"
+    label="Year 5 Sementer 2"
     onChange={handleChange2}
   >
   <MenuItem>work in progress...</MenuItem>
@@ -334,41 +335,6 @@ style={{
 </Modal>
 </MDBox>
 
-
-
-<Dialog
-  open={open2}
-  onClose={handleClose2}
-  scroll={scroll}
-  aria-labelledby="scroll-dialog-title"
-  aria-describedby="scroll-dialog-description"
-  style={{width: "100%"}}
-  fullWidth
->
-  <MDBox><DialogTitle   style={{backgroundColor: "#1a2035",border: "1px solid #1a2035"}}
-  id="scroll-dialog-title">
-
-  <div style={{display: "flex",justifyContent: "space-between"}}>
-  <div><AddIcon fontSize='medium' style={{cursor: "pointer",color: "#fff"}}/></div> <div><MDBox style={{color: "#fff"}}>Year 1  Sem I</MDBox></div> <div> <CancelIcon fontSize='medium' onClick={handleClose} style={{cursor: "pointer",color: "#fff"}}/></div>
-  </div>  
-  </DialogTitle></MDBox>
-  <DialogContent style={{backgroundColor: "#1a2035"}} dividers={scroll === 'paper'}>
-  <motion.div
-  onClick={(e) => e.stopPropagation()}  // Prevent click from closing modal
-  variants={flip}
-  initial="hidden"
-  animate="visible"
-  exit="exit"
-  >
-
-
-  </motion.div>
-
-  </DialogContent>
-  <DialogActions style={{backgroundColor: "#1a2035"}}>
-      <h1>Add Button</h1>
-  </DialogActions>
-</Dialog>
 </div>
 
   </MDBox>
